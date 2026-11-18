@@ -113,9 +113,12 @@ a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-rad
 }
 @media (max-width: 640px) {
   :root { --section-gap: 72px; }
-  body { font-size: 16px; line-height: 26px; }
+  body { font-size: 16px; line-height: 24px; }
   .hero { padding-top: 48px; }
-  .hero-title { font-size: 36px; line-height: 40px; }
+  .hero-title { font-size: 32px; line-height: 35px; }
+  .home-work .work-card--small .work-card-title { font-size: 22px; line-height: 27px; }
+  .home-work .work-card--large .work-card-title { line-height: 29px; }
+  .home-work .work-card-summary { line-height: 24px; }
   .carousel { margin-top: 64px; --item-w: 260px; --item-h: 195px; --gap: 12px; --fade: 32px; }
   .work-title { font-size: 24px; line-height: 32px; margin-bottom: 40px; }
 }
