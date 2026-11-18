@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Auditing order creation in a bakery ERP · Dmytro Tanets</title>
+    <meta name="description" content="WaWiAssist is HS-Soft’s order management system for bakeries. I used PostHog analytics and a short stakeholder survey to choose which tasks to audit, then studied session recordings and heatmaps of order creation. I proposed changes to navigation, the customer filter and search.">
+    <link rel="icon" href="../../favicon.ico?v=portrait-20261118" sizes="32x32">
+    <link rel="icon" href="../../favicon.svg?v=portrait-20261118" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../../apple-touch-icon.png?v=portrait-20261118">
+    <link rel="manifest" href="../../site.webmanifest?v=portrait-20261118">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://api.fontshare.com">
+    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="case.css">
+    <link rel="stylesheet" href="../../assets/css/content-table.css">
+    <link rel="stylesheet" href="../../assets/css/work-cards.css">
+    <link rel="stylesheet" href="../../assets/css/next-case.css">
+    <script src="../../data/cases.js" defer></script>
+    <script src="../../assets/js/case-registry.js" defer></script>
+    <script src="../../assets/js/analytics.js" defer></script>
+    <link rel="alternate" type="text/plain" href="../../llms.txt" title="Portfolio text overview">
+</head>
+<body>
+    <!-- Icons: reusable inline SVG symbols (Tabler geometry, 1.5px stroke).
+         Use: <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-left"></use></svg>
+         Size: .icon is 16px, add .icon-20 for 20px. -->
+    <svg class="icon-sprite" aria-hidden="true" focusable="false">
+        <symbol id="icon-arrow-left" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14" vector-effect="non-scaling-stroke"/>
+                <path d="M5 12l6 6" vector-effect="non-scaling-stroke"/>
+                <path d="M5 12l6 -6" vector-effect="non-scaling-stroke"/>
+            </g>
+        </symbol>
+        <symbol id="icon-arrow-right" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14" vector-effect="non-scaling-stroke"/>
+                <path d="M19 12l-6 6" vector-effect="non-scaling-stroke"/>
+                <path d="M19 12l-6 -6" vector-effect="non-scaling-stroke"/>
+            </g>
+        </symbol>
+        <symbol id="icon-x" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 6L6 18" vector-effect="non-scaling-stroke"/>
+                <path d="M6 6l12 12" vector-effect="non-scaling-stroke"/>
+            </g>
+        </symbol>
+        <symbol id="icon-arrow-up" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5v14" vector-effect="non-scaling-stroke"/>
+                <path d="M18 11l-6 -6" vector-effect="non-scaling-stroke"/>
+                <path d="M6 11l6 -6" vector-effect="non-scaling-stroke"/>
+            </g>
+        </symbol>
+        <symbol id="icon-chevron-left" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 6l-6 6l6 6" vector-effect="non-scaling-stroke"/>
+            </g>
+        </symbol>
+        <symbol id="icon-chevron-right" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 6l6 6l-6 6" vector-effect="non-scaling-stroke"/>
+            </g>
+        </symbol>
+    </svg>
+
+    <!-- Site header (same structure, content and links as the home page) -->
+    <header class="site-header">
+        <a class="brand" href="../../" aria-label="Dmytro Tanets, home">
+            <img src="../../images/avatar.png" width="40" height="40" alt="">
+            <span class="brand-text">
+                <span class="brand-name">Dmytro Tanets</span>
+                <span class="brand-role">Product Designer</span>
+            </span>
+        </a>
+        <nav class="links">
+            <a class="nav-link" href="../../Dmytro-Tanets-CV.pdf" download>
+                <span class="label-long">Download CV</span><span class="label-short">CV</span>
+            </a>
+            <a class="button" href="mailto:dmitriytanets@gmail.com">Get in touch</a>
+        </nav>
+    </header>
+
+    <main class="page">
+<header class="block case-header">
+<a class="back" href="../../" data-work-link><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-left"></use></svg><span>All work</span></a>
+<p class="label">B2B · ERP · UX audit</p>
+<h1>Auditing order creation in a bakery ERP</h1>
+<p class="lede">WaWiAssist is HS-Soft’s order management system for bakeries. I used PostHog analytics and a short stakeholder survey to choose which tasks to audit, then studied session recordings and heatmaps of order creation. I proposed changes to navigation, the customer filter and search.</p>
+<dl class="meta">
+<div><dt>Role</dt><dd>UX designer</dd></div>
+<div><dt>Timeline</dt><dd>Late 2025, about 2 months</dd></div>
+<div><dt>Tools</dt><dd>Figma, PostHog</dd></div>
+<div><dt>Status</dt><dd>Partly implemented</dd></div>
+</dl>
+</header>
+
+<figure class="figure hero" data-slot="hero"><div class="media"><img src="images/thumbnail.webp?v=thumb-ea1454817962" alt="The WaWiAssist order creation screen with a customer list, order details and an item table." width="2400" height="1800" decoding="async" fetchpriority="high"></div></figure>
+
+<section class="block summary" aria-label="Context, goal and outcome">
+<div class="row"><p class="label">Context</p><p>When I joined HS-Soft, auditing the products and proposing improvements was part of my role. WaWiAssist is used for orders, production planning, picking and invoicing.</p></div>
+<div class="row"><p class="label">Goal</p><p>Prioritise areas for improvement and propose changes to reduce time on task in the application's key workflows.</p></div>
+<div class="row"><p class="label">Outcome</p><p>The navigation and filter proposals were approved for the backlog. The first stage of the sidebar was built while I was there. Expanded search was blocked by database constraints. There are no post-release measurements.</p></div>
+</section>
+
+<section class="block">
+<h2>Choosing what to audit first</h2>
+<p>I started with page views, time on page and clicks in PostHog. Many users entered through the console, which loaded the customer page first. New users also clicked around while learning the product. To focus on established use, I asked a stakeholder to identify experienced users among the most active accounts and created a cohort for them.</p>
+<p>For this cohort, I combined the three page metrics into a user priority score for each page.</p>
+<div class="figures analytics-grid">
+<figure class="figure" data-slot="analytics-pageviews"><div class="media"><img src="images/analytics-pageviews.webp" alt="PostHog page views shown as a pie chart with a page-path legend." width="1280" height="960" decoding="async" loading="lazy"></div><figcaption>PostHog page views used to compare activity across pages.</figcaption></figure>
+<figure class="figure" data-slot="analytics-page-duration"><div class="media"><img src="images/analytics-page-duration.webp" alt="PostHog bar chart comparing average previous pageview duration across pages in November 2025." width="1280" height="960" decoding="async" loading="lazy"></div><figcaption>Time on page used as one input to the user priority score.</figcaption></figure>
+<figure class="figure" data-slot="analytics-clicks"><div class="media"><img src="images/analytics-clicks.webp" alt="PostHog click activity shown as a pie chart with a page-path legend." width="1280" height="960" decoding="async" loading="lazy"></div><figcaption>Click activity used as another input to the user priority score.</figcaption></figure>
+</div>
+<p>I used session recordings and click heatmaps to identify the tasks people performed on those pages. Each task received the user priority score of the page where it took place.</p>
+<div class="figures">
+<figure class="figure" data-slot="analytics-task-heatmap"><div class="media"><img src="images/analytics-task-heatmap.webp" alt="Four WaWi click heatmaps with identified tasks: creating or editing orders, viewing or printing production lists or delivery notes, allowing or denying orders, creating or editing customers, and checking or editing order presets." width="2400" height="1800" decoding="async" loading="lazy"></div><figcaption>Click heatmaps and the tasks identified alongside session recordings.</figcaption></figure>
+</div>
+<p>I then asked stakeholders to rate each task's importance to the business from 0 to 10. A score of 0 meant that losing the feature unexpectedly would not matter; 10 meant it was critical.</p>
+<p>I combined the user priority scores with the stakeholder scores to set the audit priorities. Creating and editing orders had the highest combined score, so I focused the audit there.</p>
+<div class="content-table-wrap" role="region" aria-label="Audit task priorities" tabindex="0">
+<table class="content-table content-table--priorities" aria-label="Audit task priorities">
+<thead>
+<tr><th scope="col">Task</th><th scope="col">User priority score</th><th scope="col">Business importance</th><th scope="col">Combined priority</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row">Create / edit order</th><td>10</td><td>9</td><td>9.5</td></tr>
+<tr><th scope="row">Production list or delivery notes</th><td>7</td><td>10</td><td>8.5</td></tr>
+<tr><th scope="row">Allow / deny orders</th><td>7</td><td>7</td><td>7</td></tr>
+<tr><th scope="row">Create / edit customer</th><td>4</td><td>7</td><td>5.5</td></tr>
+<tr><th scope="row">Order preset</th><td>1</td><td>8</td><td>4.5</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section class="block">
+<h2>Mapping how orders are created</h2>
+<p>Creating and editing orders followed nearly identical flows. We chose to focus on creation first as the more important task, since the same improvements would also apply to editing.</p>
+<p>I returned to the recordings to study the steps in detail. I logged actions in FigJam and mapped the current order-creation flow. Heatmaps helped locate interactions on the page; the recordings showed their sequence.</p>
+<div class="figures grid-2">
+<figure class="figure" data-slot="recordings-review"><div class="media"><img src="images/recordings-review.webp" alt="A FigJam action log with notes and interface screenshots arranged in sequences from the session review." width="1280" height="960" decoding="async" loading="lazy"></div><figcaption>FigJam action log from the session review.</figcaption></figure>
+<figure class="figure" data-slot="order-creation-flow"><div class="media"><img src="images/order-creation-flow.webp" alt="Detailed order creation flow with checks for the selected day, customer visibility and order templates, followed by a simplified flow: select day, select customer, and add, edit or review order items." width="1280" height="960" decoding="async" loading="lazy"></div><figcaption>Detailed and simplified views of the current order-creation flow.</figcaption></figure>
+</div>
+</section>
+
+<section class="block">
+<h2>Key findings</h2>
+<p>From the session recordings and heatmaps, I identified three recurring patterns:</p>
+<ul class="findings">
+<li><strong>Repeated navigation.</strong> Around 60% of the users I observed clicked Create order in the sidebar after filling out an order, even though they were already on that page.</li>
+<li><strong>Time spent finding a customer.</strong> Finding a customer accounted for roughly 80% of the time spent creating an order in the recordings I reviewed.</li>
+<li><strong>Hidden filter value.</strong> The customer filter’s selected value was hidden behind the Filter button. Most observed users tried different values while looking for a customer.</li>
+</ul>
+</section>
+
+<section class="block">
+<h2>Turning observations into hypotheses</h2>
+<p>I used these observations to form three hypotheses about how the interface could support faster order creation.</p>
+<ul class="hypotheses">
+<li><strong>Navigation:</strong> Keeping the sidebar open by default, with the current page highlighted, could help users see that Create order was already open and avoid clicking its navigation item again.</li>
+<li><strong>Filter:</strong> Showing the single customer filter directly in the toolbar could remove the extra step of opening the Filter button to see or change its value.</li>
+<li><strong>Search:</strong> Showing matching customers outside the active filter could help people find a customer without repeatedly changing the filter.</li>
+</ul>
+</section>
+
+<section class="block">
+<h2>Keep the sidebar open by default</h2>
+<p>The sidebar expanded only on hover, and Create order was nested in a submenu. Its navigation item was hidden while users filled out an order.</p>
+<p>I proposed keeping the sidebar open by default, with the current page highlighted. This would let users see that Create order was already open. They could still collapse the sidebar when they needed more space.</p>
+<div class="figures">
+<div class="pair"><figure class="figure" data-slot="navigation-before"><div class="media"><img src="sidebar/video/sidebar-before-poster.webp" alt="The old sidebar expands over the order page on hover, revealing the nested Create order navigation item, then collapses again." width="1800" height="1350" decoding="async" loading="lazy"></div><figcaption>Before. The Create order navigation item was hidden in a submenu until the sidebar expanded on hover.</figcaption></figure><figure class="figure" data-slot="navigation-proposed"><div class="media"><img src="sidebar/video/sidebar-after-poster.webp" alt="The proposed sidebar starts open with Create order highlighted, collapses to an icon rail, and shows submenus on hover." width="1800" height="1350" decoding="async" loading="lazy"></div><figcaption>Proposed. The sidebar is open by default, with Create order highlighted as the current page.</figcaption></figure></div>
+</div>
+
+<section class="subsection" aria-labelledby="sidebar-details-title">
+<h3 id="sidebar-details-title">Navigation and space with the new sidebar</h3>
+<p>With automatic expansion on hover removed, users needed a way to reach sub-items while the sidebar was collapsed. I proposed a flyout on hover so they could switch pages without reopening the whole sidebar. The app consisted almost entirely of tables, sometimes several on one page. Keeping the sidebar open left less room for content, so I checked every page at 1920, 1440 and 1280 px to see whether the change would cause any layout problems.</p>
+<div class="figures grid-2">
+<figure class="figure" data-slot="sidebar-flyout"><div class="media"><img src="images/sidebar-flyout.webp" alt="An order submenu opens beside the collapsed sidebar on the order creation screen." width="2400" height="1800" decoding="async" loading="lazy"></div><figcaption>A flyout gives access to sub-items while the sidebar is collapsed.</figcaption></figure>
+<figure class="figure" data-slot="sidebar-layout-1280"><div class="media"><img src="images/sidebar-layout-1280.webp" alt="Create invoice and invoice list screens with the expanded sidebar, arranged at different widths." width="2400" height="1800" decoding="async" loading="lazy"></div><figcaption>Checking table layouts with the expanded sidebar at different screen widths.</figcaption></figure>
+</div>
+</section>
+</section>
+
+<section class="block">
+<h2>Show the filter directly in the toolbar</h2>
+<p>There was only one customer filter, but it was hidden behind a generic Filter button. People had to open that button to see or change the filter's value.</p>
+<p>I proposed placing the customer filter directly in the toolbar, so its current value would stay visible and people could change it in one step.</p>
+<div class="figures">
+<div class="pair"><figure class="figure" data-slot="filter-before"><div class="media"><img src="images/filter-before.webp" alt="The order toolbar has a search field, a generic Filter button and a three dot menu." width="2400" height="1800" decoding="async" loading="lazy"></div><figcaption>Before. The customer filter&#39;s selected value is hidden behind Filter.</figcaption></figure><figure class="figure" data-slot="filter-proposed"><div class="media"><img src="images/filter-proposed.webp" alt="The customer filter dropdown is open above the search field, with the selected value visible." width="2400" height="1800" decoding="async" loading="lazy"></div><figcaption>Proposed. The selected filter value stays visible directly in the toolbar.</figcaption></figure></div>
+</div>
+</section>
+
+<section class="block">
+<h2>Show the matches hidden by filters</h2>
+<p>The repeated filter changes suggested that people needed to see matching customers outside the active filter.</p>
+<p>I proposed showing matching customers excluded by the active filter in a separate group, so users could find them without repeatedly changing the filter.</p>
+<div class="figures">
+<figure class="figure" data-slot="search-hidden-matches"><div class="media"><img src="images/search-hidden-matches.webp" alt="Customer search results are split into visible matches and matches hidden by the current filter." width="2400" height="1800" decoding="async" loading="lazy"></div><figcaption>Matching customers excluded by the current filter appear in a separate group.</figcaption></figure>
+</div>
+</section>
+
+<section class="block">
+<h2>Preparing to measure the changes</h2>
+<p>I set up tracking in PostHog to evaluate the proposed changes. I proposed comparing similar orders from the same cohort of experienced users before and after release, tracking:</p>
+<ul class="metrics">
+<li><strong>Order creation time:</strong> median time from starting a new order to a confirmed save.</li>
+<li><strong>Customer selection time:</strong> median time to find and select a customer, including time spent checking or changing the filter.</li>
+<li><strong>Repeated navigation:</strong> the share of order-creation attempts where users click Create order again while already on that page, before saving.</li>
+<li><strong>Repeated filter changes:</strong> how often users switch filter values while keeping the same search query.</li>
+</ul>
+<p>A/B testing was declined for technical reasons.</p>
+</section>
+
+<section class="block">
+<h2>Team review and implementation</h2>
+<p>I discussed all three proposals with the team. The navigation and filter changes were approved and added to the backlog.</p>
+<p>The team supported the expanded search idea, but its implementation was rejected because it was too difficult with the existing database.</p>
+<p>The sidebar implementation was split into stages, and the first stage was completed while I was there.</p>
+<p>Later, the company stopped developing this version of the product. I cannot confirm a wider rollout and do not have post-release measurements.</p>
+</section>
+    </main>
+    <nav class="read-next" data-read-next="wawi-audit" aria-labelledby="read-next-title"><h2 class="read-next-title" id="read-next-title">Read next</h2><div class="case-grid"><a class="work-card work-card--small" data-slug="receipt-search" data-side="right" href="../../cases/receipt-search/"><span class="work-card-media"><img src="../../cases/receipt-search/images/hero.webp" alt="" width="2400" height="1800" loading="lazy" decoding="async"></span><div class="work-card-body"><h3 class="work-card-title"><span class="work-card-title-text">Searching receipts without hitting the table limit</span></h3><p class="work-card-tags">B2B · Retail analytics · Data search</p></div></a><a class="work-card work-card--small" data-slug="async-task-service" data-side="right" href="../../cases/async-task-service/"><span class="work-card-media"><img src="../../cases/async-task-service/images/hero.webp?v=thumb-968b81026c77" alt="" width="2400" height="1800" loading="lazy" decoding="async"></span><div class="work-card-body"><h3 class="work-card-title"><span class="work-card-title-text">Monitoring background tasks in one dashboard</span></h3><p class="work-card-tags">B2B · Developer tools · Task monitoring</p></div></a><a class="work-card work-card--small" data-slug="wizmenu" data-side="right" href="../../cases/wizmenu/"><span class="work-card-media"><img src="../../cases/wizmenu/images/hero.webp" alt="" width="2400" height="1800" loading="lazy" decoding="async"></span><div class="work-card-body"><h3 class="work-card-title"><span class="work-card-title-text">Designing WizMenu for owners and guests</span></h3><p class="work-card-tags">B2B · Restaurant software · QR menus</p></div></a></div></nav>
+
+    <!-- Site footer (same content and links as the home page) -->
+    <footer class="site-footer">
+        <div class="footer-links">
+            <a href="../../llms.txt">Text overview</a>
+            <span class="footer-separator" aria-hidden="true">/</span>
+            <a href="mailto:dmitriytanets@gmail.com">dmitriytanets@gmail.com</a>
+            <span class="footer-separator" aria-hidden="true">/</span>
+            <a href="https://www.linkedin.com/in/dmitriytanets/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <span class="footer-separator" aria-hidden="true">/</span>
+            <a href="https://dribbble.com/dmitriyt95" target="_blank" rel="noopener noreferrer">Dribbble</a>
+        </div>
+        <a class="back-to-top" href="#"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-up"></use></svg><span>Back to top</span></a>
+    </footer>
+
+    <script src="case.js"></script>
+</body>
+</html>

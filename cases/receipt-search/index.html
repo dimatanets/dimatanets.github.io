@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Searching receipts without hitting the table limit · Dmytro Tanets</title>
+    <meta name="description" content="CashAssist Web is HS-Soft’s back-office application for managing cash registers and reviewing sales data. I worked on receipt search in its analytics module, where users find receipts, review their details and export results.">
+    <link rel="icon" href="../../favicon.ico?v=portrait-20261118" sizes="32x32">
+    <link rel="icon" href="../../favicon.svg?v=portrait-20261118" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../../apple-touch-icon.png?v=portrait-20261118">
+    <link rel="manifest" href="../../site.webmanifest?v=portrait-20261118">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://api.fontshare.com">
+    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <!-- Reuse the existing case styles and components without adding CSS. -->
+    <link rel="stylesheet" href="../wawi-audit/case.css">
+    <link rel="stylesheet" href="../../assets/css/work-cards.css">
+    <link rel="stylesheet" href="../../assets/css/next-case.css">
+    <script src="../../data/cases.js" defer></script>
+    <script src="../../assets/js/case-registry.js" defer></script>
+    <script src="../../assets/js/analytics.js" defer></script>
+    <link rel="alternate" type="text/plain" href="../../llms.txt" title="Portfolio text overview">
+</head>
+<body>
+    <svg class="icon-sprite" aria-hidden="true" focusable="false">
+        <symbol id="icon-arrow-left" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14" vector-effect="non-scaling-stroke"/>
+                <path d="M5 12l6 6" vector-effect="non-scaling-stroke"/>
+                <path d="M5 12l6 -6" vector-effect="non-scaling-stroke"/>
+            </g>
+        </symbol>
+        <symbol id="icon-arrow-up" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5v14" vector-effect="non-scaling-stroke"/>
+                <path d="M18 11l-6 -6" vector-effect="non-scaling-stroke"/>
+                <path d="M6 11l6 -6" vector-effect="non-scaling-stroke"/>
+            </g>
+        </symbol>
+        <symbol id="icon-x" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 6L6 18" vector-effect="non-scaling-stroke"/>
+                <path d="M6 6l12 12" vector-effect="non-scaling-stroke"/>
+            </g>
+        </symbol>
+        <symbol id="icon-chevron-left" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 6l-6 6l6 6" vector-effect="non-scaling-stroke"/>
+            </g>
+        </symbol>
+        <symbol id="icon-chevron-right" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 6l6 6l-6 6" vector-effect="non-scaling-stroke"/>
+            </g>
+        </symbol>
+    </svg>
+
+    <header class="site-header">
+        <a class="brand" href="../../" aria-label="Dmytro Tanets, home">
+            <img src="../../images/avatar.png" width="40" height="40" alt="">
+            <span class="brand-text">
+                <span class="brand-name">Dmytro Tanets</span>
+                <span class="brand-role">Product Designer</span>
+            </span>
+        </a>
+        <nav class="links">
+            <a class="nav-link" href="../../Dmytro-Tanets-CV.pdf" download>
+                <span class="label-long">Download CV</span><span class="label-short">CV</span>
+            </a>
+            <a class="button" href="mailto:dmitriytanets@gmail.com">Get in touch</a>
+        </nav>
+    </header>
+
+    <main class="page">
+        <header class="block case-header">
+            <a class="back" href="../../" data-work-link><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-left"></use></svg><span>All work</span></a>
+            <p class="label">B2B · Retail analytics · Data search</p>
+            <h1>Searching receipts without hitting the table limit</h1>
+            <p class="lede">CashAssist Web is HS-Soft’s back-office application for managing cash registers and reviewing sales data. I worked on receipt search in its analytics module, where users find receipts, review their details and export results.</p>
+            <dl class="meta">
+                <div><dt>Role</dt><dd>UX designer</dd></div>
+                <div><dt>Timeline</dt><dd>June 2026</dd></div>
+                <div><dt>Team</dt><dd>CTO, developer</dd></div>
+                <div><dt>Tools</dt><dd>Figma, PostHog</dd></div>
+                <div><dt>Status</dt><dd>Shipped</dd></div>
+            </dl>
+        </header>
+
+        <figure class="figure hero" data-slot="hero">
+            <div class="media"><img src="images/hero.webp" width="4240" height="3180" alt="CashAssist Web receipt search with grouped filters beside the results table." decoding="async" fetchpriority="high"></div>
+        </figure>
+
+        <section class="block summary" aria-label="Context, goal and outcome">
+            <div class="row"><p class="label">Context</p><p>The CTO asked me to rework receipt search in CashAssist Web’s analytics module. The page could not display a large table, so customers used it very little. When a search failed, developers sent them the data from the system by hand.</p></div>
+            <div class="row"><p class="label">Goal</p><p>Let people find and export receipts for any period without the page breaking, and make it clear what happens while a long search runs.</p></div>
+            <div class="row"><p class="label">Outcome</p><p>The redesign shipped with grouped filters, search progress and cancellation, a download option for large results, and receipt details in a drawer.</p></div>
+        </section>
+
+        <section class="block">
+            <h2>Reviewing the existing search</h2>
+            <p>I started by reviewing session recordings and heatmaps in PostHog, then walked through the full flow from setting filters to opening a receipt and exporting results.</p>
+            <p>The review highlighted three areas to address:</p>
+            <ul class="findings">
+                <li>The long filter form.</li>
+                <li>Missing feedback during searches.</li>
+                <li>Receipt details opening below the results in a second scrollable area.</li>
+            </ul>
+            <div class="figures">
+                <figure class="figure" data-slot="audit-review">
+                    <button class="zoom" type="button" aria-label="Enlarge image: The original receipt search: a long filter form and receipt details below the results."><div class="media"><img src="images/audit-review.webp" width="1880" height="1410" alt="The original receipt search with a long filter form and receipt details below the results." decoding="async" loading="lazy"></div></button>
+                    <figcaption>The original receipt search: a long filter form and receipt details below the results.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="block">
+            <h2>Three directions, one chosen</h2>
+            <p>I explored three ways to organise receipt search. The first kept the existing layout, with collapsible filter groups and a Calculate button fixed at the bottom. The second reused an established filter pattern already in active use in another HS-Soft product, with main filters above the results and additional filters collapsed by default. The third treated each search as a saved report, with filters shown when creating a new report.</p>
+            <p>I recommended the first layout for discussion with the team.</p>
+            <div class="figures">
+                <figure class="figure" data-slot="layout-grouped-filters">
+                    <button class="zoom" type="button" aria-label="Enlarge image: Version 1: collapsible filter groups and a fixed Calculate button."><div class="media"><img src="images/layout-grouped-filters.webp" width="1600" height="1200" alt="First layout: grouped filters in a left panel, applied conditions above the results and a fixed Calculate button." decoding="async" loading="lazy"></div></button>
+                    <figcaption>Version 1: collapsible filter groups and a fixed Calculate button.</figcaption>
+                </figure>
+            </div>
+            <div class="figures pair">
+                <figure class="figure" data-slot="layout-top-filters">
+                    <button class="zoom" type="button" aria-label="Enlarge image: Version 2: main filters above the results, additional filters collapsed."><div class="media"><img src="images/layout-top-filters.webp" width="1600" height="1200" alt="Second layout: main filters and Calculate above the results, with additional filters collapsed." decoding="async" loading="lazy"></div></button>
+                    <figcaption>Version 2: main filters above the results, additional filters collapsed.</figcaption>
+                </figure>
+                <figure class="figure" data-slot="layout-saved-reports">
+                    <button class="zoom" type="button" aria-label="Enlarge image: Version 3: saved reports, with filters shown when creating a report."><div class="media"><img src="images/layout-saved-reports.webp" width="1600" height="1200" alt="Third layout: a list of saved search reports, including dates and the number of results." decoding="async" loading="lazy"></div></button>
+                    <figcaption>Version 3: saved reports, with filters shown when creating a report.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="block">
+            <h2>Filters that fold away</h2>
+            <p>I grouped the filters into collapsible sections. Applied conditions stay visible as chips above the results, and Reset filters clears them together. The Calculate button stays fixed at the bottom of the filter panel, so it remains available while people scroll through the filters.</p>
+            <div class="figures pair">
+                <figure class="figure" data-slot="filters-before">
+                    <button class="zoom" type="button" aria-label="Enlarge image: Before: the original filter panel."><div class="media"><img src="images/filters-before.webp" width="1600" height="1200" alt="Original filter form with all fields in a long panel and Calculate at the bottom." decoding="async" loading="lazy"></div></button>
+                    <figcaption>Before: the original filter panel.</figcaption>
+                </figure>
+                <figure class="figure" data-slot="filters-after">
+                    <button class="zoom" type="button" aria-label="Enlarge image: After: collapsible filter groups and a fixed Calculate button."><div class="media"><img src="images/filters-after.webp" width="1600" height="1200" alt="Redesigned filter panel with collapsible groups, applied conditions and a fixed Calculate button." decoding="async" loading="lazy"></div></button>
+                    <figcaption>After: collapsible filter groups and a fixed Calculate button.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="block">
+            <h2>A long search people can follow</h2>
+            <p>I designed an empty state for the page before a search starts. While a search runs, the loading state shows how many records have been processed and lets people cancel.</p>
+            <p>Background search and a notification when results are ready were planned for a later stage.</p>
+            <div class="figures pair">
+                <figure class="figure" data-slot="search-initial">
+                    <button class="zoom" type="button" aria-label="Enlarge image: Before a search starts."><div class="media"><img src="images/search-initial.webp" width="2040" height="1530" alt="Receipt search before a search starts, with a No results yet message and Calculate action." decoding="async" loading="lazy"></div></button>
+                    <figcaption>Before a search starts.</figcaption>
+                </figure>
+                <figure class="figure" data-slot="search-loading">
+                    <button class="zoom" type="button" aria-label="Enlarge image: The loading state shows processed records and lets people cancel the search."><div class="media"><img src="images/search-loading.webp" width="2040" height="1530" alt="Search progress with the number of processed records and a Cancel search action." decoding="async" loading="lazy"></div></button>
+                    <figcaption>The loading state shows processed records and lets people cancel the search.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="block">
+            <h2>When the result is too big to show</h2>
+            <p>Results over 50 MB could not be displayed in the table. I designed a state that explains the limit and offers the full results as a file to download.</p>
+            <div class="figures">
+                <figure class="figure" data-slot="large-result">
+                    <button class="zoom" type="button" aria-label="Enlarge image: The result is offered as a file when the table cannot show it."><div class="media"><img src="images/large-result.webp" width="2040" height="1530" alt="A Results are too large to display state with an Export XLS download action." decoding="async" loading="lazy"></div></button>
+                    <figcaption>The result is offered as a file when the table cannot show it.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="block">
+            <h2>Opening a receipt</h2>
+            <p>In the original page, clicking a receipt opened its details below the results. This divided the available height between two separately scrollable areas.</p>
+            <p>I explored three alternatives: a drawer, a split view with a permanent area for receipt details, and an expandable row.</p>
+            <p>The drawer showed details on demand. The split view kept a dedicated area for checking receipts one after another. An expandable row would push other results down as the receipt grew longer, so I did not consider it suitable for large receipts.</p>
+            <div class="figures">
+                <figure class="figure" data-slot="receipt-drawer">
+                    <button class="zoom" type="button" aria-label="Enlarge image: Drawer: receipt details open in a side panel on demand."><div class="media"><img src="images/receipt-drawer.webp" width="2040" height="1530" alt="Receipt details in a drawer on the right of the search results." decoding="async" loading="lazy"></div></button>
+                    <figcaption>Drawer: receipt details open in a side panel on demand.</figcaption>
+                </figure>
+            </div>
+            <div class="figures pair">
+                <figure class="figure" data-slot="receipt-split-view">
+                    <button class="zoom" type="button" aria-label="Enlarge image: Split view: a permanent area is reserved for receipt details."><div class="media"><img src="images/receipt-split-view.webp" width="2040" height="1530" alt="Receipt details in a permanent panel beside the search results." decoding="async" loading="lazy"></div></button>
+                    <figcaption>Split view: a permanent area is reserved for receipt details.</figcaption>
+                </figure>
+                <figure class="figure" data-slot="receipt-expandable-row">
+                    <button class="zoom" type="button" aria-label="Enlarge image: Expandable row: receipt details open inside the results table."><div class="media"><img src="images/receipt-expandable-row.webp" width="2040" height="1530" alt="A receipt expanded within the results table, pushing the following results down." decoding="async" loading="lazy"></div></button>
+                    <figcaption>Expandable row: receipt details open inside the results table.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="block">
+            <h2>Team review and implementation</h2>
+            <p>I discussed the layouts, search states and receipt views with the CTO and developer. We chose the first layout and the drawer, and I reviewed the implementation as it was built.</p>
+            <p>The redesign shipped.</p>
+        </section>
+    </main>
+
+    <nav class="read-next" data-read-next="receipt-search" aria-labelledby="read-next-title"><h2 class="read-next-title" id="read-next-title">Read next</h2><div class="case-grid"><a class="work-card work-card--small" data-slug="async-task-service" data-side="right" href="../../cases/async-task-service/"><span class="work-card-media"><img src="../../cases/async-task-service/images/hero.webp?v=thumb-968b81026c77" alt="" width="2400" height="1800" loading="lazy" decoding="async"></span><div class="work-card-body"><h3 class="work-card-title"><span class="work-card-title-text">Monitoring background tasks in one dashboard</span></h3><p class="work-card-tags">B2B · Developer tools · Task monitoring</p></div></a><a class="work-card work-card--small" data-slug="wizmenu" data-side="right" href="../../cases/wizmenu/"><span class="work-card-media"><img src="../../cases/wizmenu/images/hero.webp" alt="" width="2400" height="1800" loading="lazy" decoding="async"></span><div class="work-card-body"><h3 class="work-card-title"><span class="work-card-title-text">Designing WizMenu for owners and guests</span></h3><p class="work-card-tags">B2B · Restaurant software · QR menus</p></div></a><a class="work-card work-card--small" data-slug="loan-platform" data-side="right" href="../../cases/loan-platform/"><span class="work-card-media"><img src="../../cases/loan-platform/images/thumbnail.webp" alt="" width="2400" height="1800" loading="lazy" decoding="async"></span><div class="work-card-body"><h3 class="work-card-title"><span class="work-card-title-text">Turning three vibe-coded versions into one loan platform</span></h3><p class="work-card-tags">Fintech · B2B · Web app</p></div></a></div></nav>
+
+    <footer class="site-footer">
+        <div class="footer-links">
+            <a href="../../llms.txt">Text overview</a>
+            <span class="footer-separator" aria-hidden="true">/</span>
+            <a href="mailto:dmitriytanets@gmail.com">dmitriytanets@gmail.com</a>
+            <span class="footer-separator" aria-hidden="true">/</span>
+            <a href="https://www.linkedin.com/in/dmitriytanets/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <span class="footer-separator" aria-hidden="true">/</span>
+            <a href="https://dribbble.com/dmitriyt95" target="_blank" rel="noopener noreferrer">Dribbble</a>
+        </div>
+        <a class="back-to-top" href="#"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-up"></use></svg><span>Back to top</span></a>
+    </footer>
+    <script src="case.js"></script>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Designing WizMenu for owners and guests · Dmytro Tanets</title>
+    <meta name="description" content="WizMenu lets restaurants manage a digital menu that guests open by scanning a QR code. I designed the admin panel and reworked the guest menu, focusing on everyday editing, reviewing changes before publication, and navigation through sections and categories.">
+    <link rel="icon" href="../../favicon.ico?v=portrait-20261118" sizes="32x32">
+    <link rel="icon" href="../../favicon.svg?v=portrait-20261118" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../../apple-touch-icon.png?v=portrait-20261118">
+    <link rel="manifest" href="../../site.webmanifest?v=portrait-20261118">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://api.fontshare.com">
+    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <!-- Reuse the existing case styles and components without adding CSS. -->
+    <link rel="stylesheet" href="../wawi-audit/case.css">
+    <link rel="stylesheet" href="../../assets/css/work-cards.css">
+    <link rel="stylesheet" href="../../assets/css/next-case.css">
+    <script src="../../data/cases.js" defer></script>
+    <script src="../../assets/js/case-registry.js" defer></script>
+    <script src="../../assets/js/analytics.js" defer></script>
+    <link rel="alternate" type="text/plain" href="../../llms.txt" title="Portfolio text overview">
+</head>
+<body>
+    <svg class="icon-sprite" aria-hidden="true" focusable="false">
+        <symbol id="icon-arrow-left" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14" vector-effect="non-scaling-stroke"/>
+                <path d="M5 12l6 6" vector-effect="non-scaling-stroke"/>
+                <path d="M5 12l6 -6" vector-effect="non-scaling-stroke"/>
+            </g>
+        </symbol>
+        <symbol id="icon-arrow-up" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5v14" vector-effect="non-scaling-stroke"/>
+                <path d="M18 11l-6 -6" vector-effect="non-scaling-stroke"/>
+                <path d="M6 11l6 -6" vector-effect="non-scaling-stroke"/>
+            </g>
+        </symbol>
+        <symbol id="icon-x" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 6L6 18" vector-effect="non-scaling-stroke"/>
+                <path d="M6 6l12 12" vector-effect="non-scaling-stroke"/>
+            </g>
+        </symbol>
+        <symbol id="icon-chevron-left" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 6l-6 6l6 6" vector-effect="non-scaling-stroke"/>
+            </g>
+        </symbol>
+        <symbol id="icon-chevron-right" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 6l6 6l-6 6" vector-effect="non-scaling-stroke"/>
+            </g>
+        </symbol>
+    </svg>
+
+    <header class="site-header">
+        <a class="brand" href="../../" aria-label="Dmytro Tanets, home">
+            <img src="../../images/avatar.png" width="40" height="40" alt="">
+            <span class="brand-text">
+                <span class="brand-name">Dmytro Tanets</span>
+                <span class="brand-role">Product Designer</span>
+            </span>
+        </a>
+        <nav class="links">
+            <a class="nav-link" href="../../Dmytro-Tanets-CV.pdf" download>
+                <span class="label-long">Download CV</span><span class="label-short">CV</span>
+            </a>
+            <a class="button" href="mailto:dmitriytanets@gmail.com">Get in touch</a>
+        </nav>
+    </header>
+
+    <main class="page">
+<header class="block case-header">
+<a class="back" href="../../" data-work-link><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-left"></use></svg><span>All work</span></a>
+<p class="label">B2B · Restaurant software · QR menus</p>
+<h1>Designing WizMenu for owners and guests</h1>
+<p class="lede">WizMenu lets restaurants manage a digital menu that guests open by scanning a QR code. I designed the admin panel and reworked the guest menu, focusing on everyday editing, reviewing changes before publication, and navigation through sections and categories.</p>
+<dl class="meta">
+<div><dt>Role</dt><dd>Product designer</dd></div>
+<div><dt>Team</dt><dd>Founder + developers</dd></div>
+<div><dt>Tools</dt><dd>Figma · Clarity</dd></div>
+<div><dt>Status</dt><dd>Live with early users</dd></div>
+</dl>
+</header>
+
+<figure class="figure hero" data-slot="hero">
+<div class="media"><img src="images/hero.webp" width="3200" height="2400" alt="WizMenu restaurant menu editor with its menu tree, item fields and Publish action." decoding="async" fetchpriority="high"></div>
+</figure>
+
+<section class="block summary" aria-label="Starting point, my role and first version">
+<div class="row"><h3 class="label">Starting point</h3><p>The founder had a product idea, a competitor list and an initial guest-menu design. I joined to design the admin panel and later reworked the guest menu.</p></div>
+<div class="row"><h3 class="label">My role</h3><p>I was the main designer. I worked with the founder and, at different stages, a frontend developer and QA.</p></div>
+<div class="row"><h3 class="label">First version</h3><p>The first version focused on editing one menu and viewing it by QR. Table management and waiter tools were left for later.</p></div>
+</section>
+
+<section class="block">
+<h2>What café owners told us</h2>
+<p>Interviews with local café owners highlighted three points:</p>
+<ul class="findings">
+<li>Menu content is maintained by the owner or administrator.</li>
+<li>Editing often happens on a tablet.</li>
+<li>One main menu covers everyday needs.</li>
+</ul>
+<div class="subsection"><p>Extra menus for events stayed outside the first version. Early wireframes also explored waiter tools, which were left for a later stage.</p></div>
+<div class="figures pair">
+<figure class="figure" data-slot="early-admin" style="max-width:588px">
+<div class="media"><img src="images/early-admin.webp" width="588" height="441" alt="Early restaurant-admin wireframe showing a persistent menu tree and an item editor." decoding="async" loading="lazy"></div>
+<figcaption>Early restaurant-admin wireframe: menu structure and editing.</figcaption>
+</figure>
+<figure class="figure" data-slot="early-waiter" style="max-width:588px">
+<div class="media"><img src="images/early-waiter.webp" width="588" height="441" alt="Early waiter-app wireframe, an exploration left for a later stage." decoding="async" loading="lazy"></div>
+<figcaption>Early waiter-app exploration, left for a later stage.</figcaption>
+</figure>
+</div>
+</section>
+
+<section class="block">
+<h2>Keep the menu structure in view</h2>
+<p>I explored separate lists and a persistent tree. The product uses a fixed Section → Category → Item hierarchy agreed with the founder. The tree sits beside the editor and is shared by editing and translation.</p>
+<div class="figures">
+<figure class="figure" data-slot="menu-tree">
+<button class="zoom" type="button" aria-label="Enlarge image: The menu tree stays visible beside the editor."><div class="media"><img src="images/menu-tree.webp?v=2400-20261118" width="2400" height="1800" alt="The Section, Category and Item hierarchy beside the menu editor." decoding="async" loading="lazy"></div></button>
+<figcaption>The menu tree stays visible beside the editor.</figcaption>
+</figure>
+</div>
+</section>
+
+<section class="block">
+<h2>Save a draft, publish when it is ready</h2>
+<p>Menu editing combines text fields, image uploads and nested entries. A page-level Save button did not fit the editing flow, so I designed changes to save as a draft. Publishing became a separate action, protecting the guest menu from unfinished edits.</p>
+<p>I proposed a preview of that draft inside the admin panel, plus a link and QR code for opening it on another device. Owners could check how their menu looked before publishing it. The same publication step also applies to availability changes such as Sold out.</p>
+<div class="figures">
+<figure class="figure" data-slot="draft-publish">
+<button class="zoom" type="button" aria-label="Enlarge image: Edits are saved as a draft and become visible to guests after publishing."><div class="media"><img src="images/draft-publish.webp?v=2400-20261118" width="2400" height="1800" alt="Menu editor with unpublished changes and the Publish changes action." decoding="async" loading="lazy"></div></button>
+<figcaption>Edits are saved as a draft and become visible to guests after publishing.</figcaption>
+</figure>
+<figure class="figure" data-slot="draft-preview">
+<button class="zoom" type="button" aria-label="Enlarge image: The draft can be previewed in the editor or opened on another device before publication."><div class="media"><img src="images/draft-preview.webp?v=2400-20261118" width="2400" height="1800" alt="Draft menu preview with mobile and desktop views, a preview link and a QR code." decoding="async" loading="lazy"></div></button>
+<figcaption>The draft can be previewed in the editor or opened on another device before publication.</figcaption>
+</figure>
+</div>
+</section>
+
+<section class="block">
+<h2>Review translations beside the original</h2>
+<p>I designed a translation mode where the original and translated text sit side by side. Owners can generate a translation automatically, then inspect or edit it.</p>
+<p>Editing and translation use the same menu tree. The mode switch sits above it, so both modes work with the same menu structure. I explored several placements for this switch in the wireframes. In the final editor, the original remains visible while the translation is edited.</p>
+<div class="figures">
+<figure class="figure" data-slot="translations">
+<button class="zoom" type="button" aria-label="Enlarge image: Original and translated text remain visible together, with automatic translation and manual editing."><div class="media"><img src="images/translations.webp?v=2400-20261118" width="2400" height="1800" alt="The translation editor showing the English original beside its Romanian translation." decoding="async" loading="lazy"></div></button>
+<figcaption>Original and translated text remain visible together, with automatic translation and manual editing.</figcaption>
+</figure>
+</div>
+</section>
+
+<section class="block">
+<h2>Make sections visible in guest navigation</h2>
+<p>Clarity session replays showed that guests had trouble switching between sections. The old navigation put categories in a vertical list and sections in a separate switcher at the bottom; the section control was easy to miss.</p>
+<p>I replaced it with one vertical list. Section headings and the categories inside them are visible together, with the current category highlighted. Guests can see the menu structure without first discovering a separate section switcher.</p>
+<div class="figures pair">
+<figure class="figure" data-slot="navigation-before">
+<button class="zoom" type="button" aria-label="Enlarge image: Before: categories in the list, sections in a separate control at the bottom."><div class="media"><img src="images/navigation-before.webp?v=2400-20261118" width="2400" height="1800" alt="The old guest-menu navigation with categories in a list and a separate section switcher at the bottom." decoding="async" loading="lazy"></div></button>
+<figcaption>Before: categories in the list, sections in a separate control at the bottom.</figcaption>
+</figure>
+<figure class="figure" data-slot="navigation-after">
+<button class="zoom" type="button" aria-label="Enlarge image: After: section headings and their categories are visible in one list."><div class="media"><img src="images/navigation-after.webp?v=2400-20261118" width="2400" height="1800" alt="The new guest-menu navigation showing section headings and their categories in one list." decoding="async" loading="lazy"></div></button>
+<figcaption>After: section headings and their categories are visible in one list.</figcaption>
+</figure>
+</div>
+</section>
+
+<section class="block">
+<h2>A simpler base for different brands</h2>
+<p>The initial guest-menu design used gradients and coloured shadows across the cards. I simplified the styling so a branded menu could be configured through a small set of colours and fonts while keeping the same layout.</p>
+<p>Restaurants can choose a theme and add their information and logo. Custom colours and fonts are configured by an admin on request. This keeps the restaurant’s editor focused on menu content while still supporting a branded guest menu.</p>
+<div class="figures pair">
+<figure class="figure" data-slot="brand-before">
+<button class="zoom" type="button" aria-label="Enlarge image: Before: the initial guest-menu design used gradients and coloured card shadows."><div class="media"><img src="images/brand-before.webp?v=2400-20261118" width="2400" height="1800" alt="The original product card with a gradient and coloured shadows, beside its eight colour variables." decoding="async" loading="lazy"></div></button>
+<figcaption>Before: the initial guest-menu design used gradients and coloured card shadows.</figcaption>
+</figure>
+<figure class="figure" data-slot="brand-after">
+<button class="zoom" type="button" aria-label="Enlarge image: After: simpler styling supports branded colours and fonts within the same layout."><div class="media"><img src="images/brand-after.webp?v=2400-20261118" width="2400" height="1800" alt="The simplified product card beside its named colours for background, text, brand and Sold out." decoding="async" loading="lazy"></div></button>
+<figcaption>After: simpler styling supports branded colours and fonts within the same layout.</figcaption>
+</figure>
+</div>
+</section>
+
+<section class="block">
+<h2>In use before a commercial launch</h2>
+<p>A few local venues use WizMenu ahead of its commercial launch. The work covers menu editing, draft preview, publication, translations and the guest menu.</p>
+</section>
+    </main>
+
+    <nav class="read-next" data-read-next="wizmenu" aria-labelledby="read-next-title"><h2 class="read-next-title" id="read-next-title">Read next</h2><div class="case-grid"><a class="work-card work-card--small" data-slug="loan-platform" data-side="right" href="../../cases/loan-platform/"><span class="work-card-media"><img src="../../cases/loan-platform/images/thumbnail.webp" alt="" width="2400" height="1800" loading="lazy" decoding="async"></span><div class="work-card-body"><h3 class="work-card-title"><span class="work-card-title-text">Turning three vibe-coded versions into one loan platform</span></h3><p class="work-card-tags">Fintech · B2B · Web app</p></div></a><a class="work-card work-card--small" data-slug="release-groups" data-side="right" href="../../cases/release-groups/"><span class="work-card-media"><img src="../../cases/release-groups/images/hero.webp" alt="" width="2400" height="1800" loading="lazy" decoding="async"></span><div class="work-card-body"><h3 class="work-card-title"><span class="work-card-title-text">Rolling out updates to client devices in stages</span></h3><p class="work-card-tags">Internal tools · B2B · Web app</p></div></a><a class="work-card work-card--small" data-slug="property-documents" data-side="right" href="../../cases/property-documents/"><span class="work-card-media"><img src="../../cases/property-documents/images/hero.webp" alt="" width="2400" height="1800" loading="lazy" decoding="async"></span><div class="work-card-body"><h3 class="work-card-title"><span class="work-card-title-text">One request for every document a property sale needs</span></h3><p class="work-card-tags">Legal tech · B2B · Web app</p></div></a></div></nav>
+
+    <footer class="site-footer">
+        <div class="footer-links">
+            <a href="../../llms.txt">Text overview</a>
+            <span class="footer-separator" aria-hidden="true">/</span>
+            <a href="mailto:dmitriytanets@gmail.com">dmitriytanets@gmail.com</a>
+            <span class="footer-separator" aria-hidden="true">/</span>
+            <a href="https://www.linkedin.com/in/dmitriytanets/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <span class="footer-separator" aria-hidden="true">/</span>
+            <a href="https://dribbble.com/dmitriyt95" target="_blank" rel="noopener noreferrer">Dribbble</a>
+        </div>
+        <a class="back-to-top" href="#"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-up"></use></svg><span>Back to top</span></a>
+    </footer>
+    <script src="case.js"></script>
+</body>
+</html>

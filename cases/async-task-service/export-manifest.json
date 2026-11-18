@@ -1,0 +1,63 @@
+{
+  "createdOn": "2026-11-18",
+  "caseFrame": "488:6499",
+  "caseUrl": "https://www.figma.com/design/41FTN2v2LSgy0IDq5rANIH/portfolio-website-v3?node-id=488-6499",
+  "format": "WebP",
+  "quality": 94,
+  "resized": false,
+  "cropped": false,
+  "images": {
+    "hero": {
+      "sourceNode": "469:37962",
+      "sourceUrl": "https://www.figma.com/design/41FTN2v2LSgy0IDq5rANIH/portfolio-website-v3?node-id=469-37962",
+      "width": 4240,
+      "height": 3180,
+      "inputBytes": 8709357,
+      "inputSha256": "bad653ee6a28e2f652257f6d13575541d24e9a4c31c0ba76c74816a6d99b85e2",
+      "path": "images/hero.webp",
+      "bytes": 2910442,
+      "sha256": "968b81026c774bdbc1e9f97603d3a472b9fef7256eaef4a1c3c1fac4e728b75c",
+      "alt": "Async Task Service dashboard with task counts, explicit filters and a table of background jobs.",
+      "exportScale": 2,
+      "cacheVersion": "thumb-968b81026c77",
+      "updatedOn": "2026-11-18"
+    },
+    "before": {
+      "sourceNode": "469:46282",
+      "sourceUrl": "https://www.figma.com/design/41FTN2v2LSgy0IDq5rANIH/portfolio-website-v3?node-id=469-46282",
+      "width": 1600,
+      "height": 1200,
+      "inputBytes": 195522,
+      "inputSha256": "15d9d980cab175bcd2b8053a98b55d328f1caf2b639d322ab29c4893f368ec65",
+      "path": "images/before.webp",
+      "bytes": 58130,
+      "sha256": "bd131833bbfead78bf768d613e3fb6ea6356b5879fe7ec469a463b5cf48deba7",
+      "alt": "The supplied HTML prototype, with task status cards above search and task type filters."
+    },
+    "after": {
+      "sourceNode": "469:50659",
+      "sourceUrl": "https://www.figma.com/design/41FTN2v2LSgy0IDq5rANIH/portfolio-website-v3?node-id=469-50659",
+      "width": 2040,
+      "height": 1530,
+      "inputBytes": 310086,
+      "inputSha256": "9db88cd889516c89512b650a3bb1b153c58cbcf35f0fc34339b474da24d0980b",
+      "path": "images/after.webp",
+      "bytes": 177838,
+      "sha256": "1f9b252c7809ca1576ef99166d911908ad6714020e24fb4377fd494f1618e4b9",
+      "alt": "The redesigned dashboard with a labelled Status filter, Completed with errors labels, and Running tasks also marked Stuck."
+    },
+    "details": {
+      "sourceNode": "469:51766",
+      "sourceUrl": "https://www.figma.com/design/41FTN2v2LSgy0IDq5rANIH/portfolio-website-v3?node-id=469-51766",
+      "width": 1400,
+      "height": 1050,
+      "inputBytes": 243935,
+      "inputSha256": "b642ea3cda57365e44b4050f6f4cb4a25e62d2179debe9112748a0ff4171aa40",
+      "path": "images/details.webp",
+      "bytes": 91464,
+      "sha256": "b7df257cd40a04241d53613381751b299009901fa78f3ff2d5b215a7bd19bdc2",
+      "alt": "A task detail panel beside the task list, showing overview, progress, JSON payload, event logs and Cancel task."
+    }
+  },
+  "updatedOn": "2026-11-18"
+}

@@ -1,0 +1,364 @@
+{
+  "date": "2026-11-16",
+  "fileKey": "41FTN2v2LSgy0IDq5rANIH",
+  "copyFrame": "365:11891",
+  "format": "WebP",
+  "quality": 94,
+  "images": [
+    {
+      "updated": "2026-11-18",
+      "file": "images/thumbnail.webp",
+      "slot": "hero",
+      "nodeId": "393:44704",
+      "sourceUrl": "https://www.figma.com/design/41FTN2v2LSgy0IDq5rANIH/portfolio-website-v3?node-id=393-44704",
+      "sourceDimensions": [
+        2120,
+        1590
+      ],
+      "exportScale": 1.1320754716981132,
+      "outputDimensions": [
+        2400,
+        1800
+      ],
+      "format": "WebP",
+      "quality": 94,
+      "effort": 6,
+      "resized": false,
+      "cropped": false,
+      "treatment": "Whole prepared composition, no crop, resizing or reframing after Figma export.",
+      "inputBytes": 2874061,
+      "inputSha256": "fab68388c858c6673f4aae4c6ae79d40bcac77c87652df31840ffc9e2e77948e",
+      "bytes": 770278,
+      "sha256": "ea14548179625c310090568cf13632f00477a89fda0ba6a0a0bf81c58c823ca4",
+      "cacheVersion": "thumb-ea1454817962",
+      "sourceExport": "docs/references/wawi-thumbnail-2026-11-18/thumbnail.png"
+    },
+    {
+      "file": "images/hero.webp",
+      "nodeId": "364:11891",
+      "sourceDimensions": [
+        1600,
+        1200
+      ],
+      "exportScale": 1.5,
+      "outputDimensions": [
+        2400,
+        1800
+      ],
+      "treatment": "Whole prepared composition, no crop, scaling or reframing after export.",
+      "bytes": 204148,
+      "sha256": "9c94965db5040891d4d50f6748fd7e92171c05604d41c09020761357d2170d1a"
+    },
+    {
+      "file": "images/task-priority.webp",
+      "nodeId": "365:18508",
+      "sourceDimensions": [
+        1600,
+        1200
+      ],
+      "exportScale": 1.5,
+      "outputDimensions": [
+        2400,
+        1800
+      ],
+      "treatment": "Whole prepared composition, no crop, scaling or reframing after export.",
+      "bytes": 45464,
+      "sha256": "cb75b528838c2d698d8bf6ddfa564a1da895f85815d076ad556271235b1ae7d7"
+    },
+    {
+      "file": "images/observed-patterns.webp",
+      "nodeId": "364:19526",
+      "sourceDimensions": [
+        1600,
+        1200
+      ],
+      "exportScale": 1.5,
+      "outputDimensions": [
+        2400,
+        1800
+      ],
+      "treatment": "Whole prepared composition, no crop, scaling or reframing after export.",
+      "bytes": 46156,
+      "sha256": "49ecd02a3b653221adb10844e4da24a20e636b442d144c027a4da5991b92eca6"
+    },
+    {
+      "file": "images/navigation-before.webp",
+      "nodeId": "364:13127",
+      "sourceDimensions": [
+        1600,
+        1200
+      ],
+      "exportScale": 1.5,
+      "outputDimensions": [
+        2400,
+        1800
+      ],
+      "treatment": "Whole prepared composition, no crop, scaling or reframing after export.",
+      "bytes": 161380,
+      "sha256": "44d2484a5606717a04aafa8dd613ac8737f5d26351d8ba067ea920e719a847ec"
+    },
+    {
+      "file": "images/navigation-proposed.webp",
+      "nodeId": "364:14497",
+      "sourceDimensions": [
+        1600,
+        1200
+      ],
+      "exportScale": 1.5,
+      "outputDimensions": [
+        2400,
+        1800
+      ],
+      "treatment": "Whole prepared composition, no crop, scaling or reframing after export.",
+      "bytes": 184870,
+      "sha256": "909ea6769c09956ff7a10bbb52bc9273da0aaa079eab92f339c14fe7d8a2f4f4"
+    },
+    {
+      "file": "images/sidebar-flyout.webp",
+      "nodeId": "426:37195",
+      "sourceDimensions": [
+        1600,
+        1200
+      ],
+      "exportScale": 1.5,
+      "outputDimensions": [
+        2400,
+        1800
+      ],
+      "treatment": "Whole prepared composition, no crop, scaling or reframing after export.",
+      "bytes": 192826,
+      "sha256": "bdf9a26d73124f250dd6d1161c396d5f6dce8c0d1d4a9b4653f2de5aad5be59f",
+      "updated": "2026-11-17",
+      "sourceExport": "docs/references/wawi-sidebar-hover-2026-11-17/sidebar-flyout-426-37195.png"
+    },
+    {
+      "file": "images/sidebar-layout-1280.webp",
+      "nodeId": "429:50064",
+      "sourceDimensions": [
+        1920,
+        1440
+      ],
+      "exportScale": 1.25,
+      "outputDimensions": [
+        2400,
+        1800
+      ],
+      "treatment": "Whole prepared composition, no crop, scaling or reframing after export.",
+      "bytes": 170378,
+      "sha256": "7c4868f37a607ee3189a8c31debd0498d0f03c2e084687d7f886c0da46225440",
+      "updated": "2026-11-17",
+      "sourceExport": "docs/references/wawi-sidebar-layout-2026-11-17/sidebar-layout-429-50064.png"
+    },
+    {
+      "file": "images/filter-before.webp",
+      "nodeId": "426:41615",
+      "sourceDimensions": [
+        1080,
+        810
+      ],
+      "exportScale": 2.2222222222222223,
+      "outputDimensions": [
+        2400,
+        1800
+      ],
+      "treatment": "Whole prepared composition, no crop, scaling or reframing after export.",
+      "bytes": 154130,
+      "sha256": "11b43f3662c3780fdabb4dd5ca3b7b71a0b2f70243b7ed4f03d9769858c3f915",
+      "updated": "2026-11-17",
+      "sourceExport": "docs/references/wawi-filters-2026-11-17/filter-before.png"
+    },
+    {
+      "file": "images/filter-proposed.webp",
+      "nodeId": "426:45821",
+      "sourceDimensions": [
+        1080,
+        810
+      ],
+      "exportScale": 2.2222222222222223,
+      "outputDimensions": [
+        2400,
+        1800
+      ],
+      "treatment": "Whole prepared composition, no crop, scaling or reframing after export.",
+      "bytes": 157620,
+      "sha256": "78051615daeae28d66fa34d661ebaa3e0ecb88a6766377b3f7b2a94cf9aa74a8",
+      "updated": "2026-11-17",
+      "sourceExport": "docs/references/wawi-filters-2026-11-17/filter-proposed.png"
+    },
+    {
+      "file": "images/search-hidden-matches.webp",
+      "nodeId": "364:18289",
+      "sourceDimensions": [
+        1600,
+        1200
+      ],
+      "exportScale": 1.5,
+      "outputDimensions": [
+        2400,
+        1800
+      ],
+      "treatment": "Whole prepared composition, no crop, scaling or reframing after export.",
+      "bytes": 193018,
+      "sha256": "19ddadfa760bc97b366b99f7c084c6921a10847892142a04e17f7b69f2583e54"
+    },
+    {
+      "file": "images/analytics-pageviews.webp",
+      "nodeId": "401:14311",
+      "date": "2026-11-17",
+      "sourceDimensions": [
+        720,
+        540
+      ],
+      "exportScale": 1.7777777777777777,
+      "outputDimensions": [
+        1280,
+        960
+      ],
+      "treatment": "Whole composition prepared by Dima, exported at the requested 1280 px width; WebP quality 94, no crop or resize after export.",
+      "bytes": 61372,
+      "sha256": "6852431b39f768e15171146454eff332998020fce3f6382f27bb140cf509ad17"
+    },
+    {
+      "file": "images/analytics-page-duration.webp",
+      "nodeId": "401:14290",
+      "date": "2026-11-17",
+      "sourceDimensions": [
+        720,
+        540
+      ],
+      "exportScale": 1.7777777777777777,
+      "outputDimensions": [
+        1280,
+        960
+      ],
+      "treatment": "Whole composition prepared by Dima, exported at the requested 1280 px width; WebP quality 94, no crop or resize after export.",
+      "bytes": 81218,
+      "sha256": "c19b6b8fb6f1dcc0672fe982adb6b40b0bfc00e9c35872731b569065d6261bc6"
+    },
+    {
+      "file": "images/analytics-clicks.webp",
+      "nodeId": "401:12775",
+      "date": "2026-11-17",
+      "sourceDimensions": [
+        720,
+        540
+      ],
+      "exportScale": 1.7777777777777777,
+      "outputDimensions": [
+        1280,
+        960
+      ],
+      "treatment": "Whole composition prepared by Dima, exported at the requested 1280 px width; WebP quality 94, no crop or resize after export.",
+      "bytes": 71292,
+      "sha256": "0dd2485d88a4216c3155330e86691338b7e06035afee2194b3289a0782f47112"
+    },
+    {
+      "file": "images/analytics-task-heatmap.webp",
+      "nodeId": "401:14331",
+      "date": "2026-11-17",
+      "sourceDimensions": [
+        1200,
+        900
+      ],
+      "exportScale": 2,
+      "outputDimensions": [
+        2400,
+        1800
+      ],
+      "treatment": "Whole composition prepared by Dima, exported at the usual large 2400 px width; WebP quality 94, no crop or resize after export.",
+      "bytes": 126762,
+      "sha256": "29ffc6efc6d2f967f218251c9fd099b217114877bdfe592e4cef8f861a66fb7b"
+    },
+    {
+      "file": "images/recordings-review.webp",
+      "nodeId": "405:6214",
+      "date": "2026-11-17",
+      "sourceDimensions": [
+        720,
+        540
+      ],
+      "exportScale": 1.7777777777777777,
+      "outputDimensions": [
+        1280,
+        960
+      ],
+      "treatment": "Whole prepared composition from section 411:11916, exported at the requested 1280 px width; WebP quality 94, no crop or resize after export.",
+      "bytes": 146424,
+      "sha256": "dc18f8f07f825c42cee435305d725679cc49ffab4efbd9eb64246878e59b3d0f"
+    },
+    {
+      "file": "images/order-creation-flow.webp",
+      "nodeId": "405:6238",
+      "date": "2026-11-17",
+      "sourceDimensions": [
+        1200,
+        900
+      ],
+      "exportScale": 1.0666666666666667,
+      "outputDimensions": [
+        1280,
+        960
+      ],
+      "treatment": "Whole prepared composition from section 411:11916, exported at the requested 1280 px width; WebP quality 94, no crop or resize after export.",
+      "bytes": 41420,
+      "sha256": "4f9ee8ef6121afa02953522db243587f86826e61fff511058742d109ef0704de"
+    }
+  ],
+  "updated": "2026-11-18",
+  "videos": [
+    {
+      "sourcePath": "C:\\Users\\Dima Tanets\\Downloads\\sidebar-before.mp4",
+      "sourceBytes": 5009989,
+      "sourceSHA256": "6e48e41d9ba6e208306d5072674c114ded747d65ff41bba8a2e6b15d963d458a",
+      "outputFile": "sidebar-before.web.mp4",
+      "outputBytes": 1002625,
+      "outputSHA256": "8ffed05c6b31135a5be200521e7059faea7ed157de036bc65f6f77954e14d302",
+      "dimensions": [
+        1800,
+        1350
+      ],
+      "fps": 60,
+      "codec": "H.264 / libx264",
+      "pixelFormat": "yuv420p",
+      "preset": "slow",
+      "crf": 18,
+      "audio": false,
+      "faststart": true,
+      "fullDecodePassed": true,
+      "durationSeconds": 6.316667,
+      "reductionPercent": 80,
+      "websiteFile": "home-wt/cases/wawi-audit/sidebar/video/sidebar-before.mp4",
+      "websitePoster": "home-wt/cases/wawi-audit/sidebar/video/sidebar-before-poster.webp",
+      "file": "sidebar/video/sidebar-before.mp4",
+      "poster": "sidebar/video/sidebar-before-poster.webp"
+    },
+    {
+      "sourcePath": "C:\\Users\\Dima Tanets\\Downloads\\sidebar-after.mp4",
+      "sourceBytes": 9280827,
+      "sourceSHA256": "a7a1f11f598a553889f11f037b40e00c36e8195b365726c77064505c71132437",
+      "outputFile": "sidebar-after.web.mp4",
+      "outputBytes": 1329497,
+      "outputSHA256": "50206912b9d64b02015a837915a27ec6fd93b92772243b50f3d13e9f987b75ec",
+      "dimensions": [
+        1800,
+        1350
+      ],
+      "fps": 60,
+      "codec": "H.264 / libx264",
+      "pixelFormat": "yuv420p",
+      "preset": "slow",
+      "crf": 18,
+      "audio": false,
+      "faststart": true,
+      "fullDecodePassed": true,
+      "durationSeconds": 10.016666666666667,
+      "reductionPercent": 85.7,
+      "websiteFile": "home-wt/cases/wawi-audit/sidebar/video/sidebar-after.mp4",
+      "websitePoster": "home-wt/cases/wawi-audit/sidebar/video/sidebar-after-poster.webp",
+      "revision": 2,
+      "ssimAll": 0.999464,
+      "file": "sidebar/video/sidebar-after.mp4",
+      "poster": "sidebar/video/sidebar-after-poster.webp"
+    }
+  ]
+}

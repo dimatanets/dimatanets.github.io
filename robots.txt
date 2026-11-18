@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# Direct access is allowed. Search indexing is disabled with noindex metadata
+# and the X-Robots-Tag response header in the nginx deployment configuration.
+# Do not add Disallow: /: crawlers need access to read the noindex directive.

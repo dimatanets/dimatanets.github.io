@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Turning three vibe-coded versions into one loan platform · Dmytro Tanets</title>
+    <meta name="description" content="A loan management platform for an Australian private lender. Over about four weeks I restructured the product, redesigned its main workflows and laid out the structure the team still builds on.">
+    <link rel="icon" href="../../favicon.ico?v=portrait-20261118" sizes="32x32">
+    <link rel="icon" href="../../favicon.svg?v=portrait-20261118" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../../apple-touch-icon.png?v=portrait-20261118">
+    <link rel="manifest" href="../../site.webmanifest?v=portrait-20261118">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://api.fontshare.com">
+    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="case.css">
+    <link rel="stylesheet" href="../../assets/css/work-cards.css">
+    <link rel="stylesheet" href="../../assets/css/next-case.css">
+    <script src="../../data/cases.js" defer></script>
+    <script src="../../assets/js/case-registry.js" defer></script>
+    <script src="../../assets/js/analytics.js" defer></script>
+    <link rel="alternate" type="text/plain" href="../../llms.txt" title="Portfolio text overview">
+</head>
+<body>
+    <!-- Icons: reusable inline SVG symbols (Tabler geometry, 1.5px stroke).
+         Use: <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-left"></use></svg>
+         Size: .icon is 16px, add .icon-20 for 20px. -->
+    <svg class="icon-sprite" aria-hidden="true" focusable="false">
+        <symbol id="icon-arrow-left" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14" vector-effect="non-scaling-stroke"/>
+                <path d="M5 12l6 6" vector-effect="non-scaling-stroke"/>
+                <path d="M5 12l6 -6" vector-effect="non-scaling-stroke"/>
+            </g>
+        </symbol>
+        <symbol id="icon-arrow-right" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14" vector-effect="non-scaling-stroke"/>
+                <path d="M19 12l-6 6" vector-effect="non-scaling-stroke"/>
+                <path d="M19 12l-6 -6" vector-effect="non-scaling-stroke"/>
+            </g>
+        </symbol>
+        <symbol id="icon-x" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 6L6 18" vector-effect="non-scaling-stroke"/>
+                <path d="M6 6l12 12" vector-effect="non-scaling-stroke"/>
+            </g>
+        </symbol>
+        <symbol id="icon-arrow-up" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5v14" vector-effect="non-scaling-stroke"/>
+                <path d="M18 11l-6 -6" vector-effect="non-scaling-stroke"/>
+                <path d="M6 11l6 -6" vector-effect="non-scaling-stroke"/>
+            </g>
+        </symbol>
+        <symbol id="icon-chevron-left" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 6l-6 6l6 6" vector-effect="non-scaling-stroke"/>
+            </g>
+        </symbol>
+        <symbol id="icon-chevron-right" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 6l6 6l-6 6" vector-effect="non-scaling-stroke"/>
+            </g>
+        </symbol>
+    </svg>
+
+    <!-- Site header (same structure, content and links as the home page) -->
+    <header class="site-header">
+        <a class="brand" href="../../" aria-label="Dmytro Tanets, home">
+            <img src="../../images/avatar.png" width="40" height="40" alt="">
+            <span class="brand-text">
+                <span class="brand-name">Dmytro Tanets</span>
+                <span class="brand-role">Product Designer</span>
+            </span>
+        </a>
+        <nav class="links">
+            <a class="nav-link" href="../../Dmytro-Tanets-CV.pdf" download>
+                <span class="label-long">Download CV</span><span class="label-short">CV</span>
+            </a>
+            <a class="button" href="mailto:dmitriytanets@gmail.com">Get in touch</a>
+        </nav>
+    </header>
+
+    <main class="page">
+
+        <!-- Case header -->
+        <header class="block case-header">
+            <a class="back" href="../../" data-work-link><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-left"></use></svg><span>All work</span></a>
+            <p class="label">Fintech · B2B · Web app</p>
+            <h1>Turning three vibe-coded versions into one loan platform</h1>
+            <p class="lede">A loan management platform for an Australian private lender. Over about four weeks I restructured the product, redesigned its main workflows and laid out the structure the team still builds on.</p>
+            <dl class="meta">
+                <div><dt>Role</dt><dd>Product designer, sole designer</dd></div>
+                <div><dt>Team</dt><dd>Product owner, project manager, 3&nbsp;developers, 1&nbsp;QA</dd></div>
+                <div><dt>Timeline</dt><dd>Jul–Aug 2026, about 4&nbsp;weeks</dd></div>
+                <div><dt>Tools</dt><dd>Figma, Antigravity, Claude Code</dd></div>
+                <div><dt>Status</dt><dd>In development</dd></div>
+            </dl>
+        </header>
+
+        <!-- Hero -->
+        <figure class="figure hero" data-slot="after-loan-financials"><div class="media"><img src="images/thumbnail.webp" alt="Turning three vibe-coded versions into one loan platform" width="2400" height="1800" decoding="async" fetchpriority="high"></div></figure>
+
+        <!-- Context / Goal / Outcome -->
+        <section class="block summary">
+            <div class="row">
+                <p class="label">Context</p>
+                <p>The lender ran its loans in spreadsheets and wanted one platform for applications, servicing and collections. When I joined there were already three working versions: one the client generated with AI, one from our developers and one from our project manager, who has a background in lending systems. Each worked in parts, and none agreed with the others.</p>
+            </div>
+            <div class="row">
+                <p class="label">Goal</p>
+                <p>Merge them into one product that an experienced finance person can use without guessing, keep every feature the business relies on, and give developers a structure they can build on.</p>
+            </div>
+            <div class="row">
+                <p class="label">Outcome</p>
+                <p>The development team builds on this structure. Applications and loans live on separate screens, a loan page has one row of tabs, and email follow-ups run on rules an admin can edit.</p>
+            </div>
+        </section>
+
+        <!-- Constraints -->
+        <section class="block">
+            <h2>Constraints</h2>
+            <dl class="constraints">
+                <div class="constraint-row">
+                    <dt>Timeline</dt>
+                    <dd>About a week for the first full version</dd>
+                </div>
+                <div class="constraint-row">
+                    <dt>Context</dt>
+                    <dd>The client was rarely available, so nobody had the full process written down</dd>
+                </div>
+                <div class="constraint-row">
+                    <dt>Scope</dt>
+                    <dd>Every real feature had to stay, but some AI-generated ones had no logic behind them</dd>
+                </div>
+                <div class="constraint-row">
+                    <dt>Development</dt>
+                    <dd>Developers kept building while I designed</dd>
+                </div>
+            </dl>
+        </section>
+
+        <!-- Designing in code -->
+        <section class="block">
+            <h2>Designing in code, reviewing live versions</h2>
+            <p>This was my first product designed mostly in code with AI agents. I started in Antigravity and moved to Claude Code when the number of edits grew. I built the screens with shadcn/ui, the component library the developers already used, and deployed early versions to Vercel. Over five review rounds the product owner, the project manager and the developers clicked through a working product instead of static mockups. Once the direction was agreed, the code moved to the team's repository for development.</p>
+        </section>
+
+        <!-- Working out what the product actually does -->
+        <section class="block">
+            <h2>Working out what the product actually does</h2>
+            <p>There was no spec, and the process lived in people's heads. Some AI-generated features only looked finished: the product owner couldn't explain tabs like Perfection and Variations, and others were empty placeholders. In the first days I ran a listening tour with the product owner, mapped what each role needs to do and reviewed the existing version against usability heuristics, to separate what the business needs from the noise.</p>
+            <div class="figures">
+                <div class="grid-2">
+                    <figure class="figure" data-slot="ux-questionnaire"><div class="media"><img src="images/ux-questionnaire.webp" alt="Listening tour with the product owner: goals, users, risks and deadlines." width="2400" height="1800" decoding="async" loading="lazy"></div><figcaption>Listening tour with the product owner: goals, users, risks and deadlines.</figcaption></figure>
+                    <figure class="figure" data-slot="user-stories"><div class="media"><img src="images/user-stories.webp" alt="Tasks for three roles: lender owner, operations manager and borrower." width="2400" height="1800" decoding="async" loading="lazy"></div><figcaption>Tasks for three roles: lender owner, operations manager and borrower.</figcaption></figure>
+                    <figure class="figure" data-slot="heuristic-review"><div class="media"><img src="images/heuristic-review.webp" alt="Heuristic review of the existing version: the biggest usability problems, ranked by severity." width="2400" height="1800" decoding="async" loading="lazy"></div><figcaption>Heuristic review of the existing version: the biggest usability problems, ranked by severity.</figcaption></figure>
+                    <figure class="figure" data-slot="early-wireframes"><div class="media"><img src="images/early-wireframes.webp" alt="Early wireframes for the dashboard and portfolio views." width="2400" height="1800" decoding="async" loading="lazy"></div><figcaption>Early wireframes for the dashboard and portfolio views.</figcaption></figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- One structure instead of three -->
+        <section class="block">
+            <h2>One structure instead of three</h2>
+            <p>Each of the three versions added its own screens, so the product grew sideways. The menu had 51&nbsp;items in 10&nbsp;nested sections, applications and active loans shared one pipeline, and a loan had nine tabs with a second row under each one. I flattened the menu to the sections people actually open, split applications and loans into two screens with their own statuses, and grouped the loan page into eight tabs, with sections on one scrolling page and a list on the left.</p>
+            <div class="figures">
+                <div class="pair">
+                    <figure class="figure" data-slot="staging-loan-summary"><div class="media"><img src="images/staging-loan-summary.webp" alt="Before. A nested menu, and a second row of tabs under every tab of a loan." width="2400" height="1800" decoding="async" loading="lazy"></div><figcaption>Before. A nested menu, and a second row of tabs under every tab of a loan.</figcaption></figure>
+                    <figure class="figure" data-slot="after-loan-overview"><div class="media"><img src="images/after-loan-overview.webp" alt="After. A flat menu, one row of tabs, sections on one page." width="2400" height="1800" decoding="async" loading="lazy"></div><figcaption>After. A flat menu, one row of tabs, sections on one page.</figcaption></figure>
+                </div>
+                <div class="pair">
+                    <figure class="figure" data-slot="staging-board"><div class="media"><img src="images/staging-board.webp" alt="Before. Applications and active loans on one board." width="2400" height="1800" decoding="async" loading="lazy"></div><figcaption>Before. Applications and active loans on one board.</figcaption></figure>
+                    <figure class="figure" data-slot="after-applications-pipeline"><div class="media"><img src="images/after-applications-pipeline.webp" alt="After. Applications have their own screen and pipeline." width="2400" height="1800" decoding="async" loading="lazy"></div><figcaption>After. Applications have their own screen and pipeline.</figcaption></figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- One place for every message -->
+        <section class="block">
+            <h2>One place for every message</h2>
+            <p>Messages lived in five places: Email, SMS Center and Bulk Comms in the menu, plus Communications and Correspondence tabs on each loan. I merged them into one Communications section with a single log, and one Communication tab on the loan.</p>
+            <div class="figures">
+                <div class="pair">
+                    <figure class="figure" data-slot="staging-communications"><div class="media"><img src="images/staging-communications.webp" alt="Before. Messages split across the menu and two tabs on every loan." width="2400" height="1800" decoding="async" loading="lazy"></div><figcaption>Before. Messages split across the menu and two tabs on every loan.</figcaption></figure>
+                    <figure class="figure" data-slot="after-communications"><div class="media"><img src="images/after-communications.webp" alt="After. One log for every email, call and letter, with templates beside it." width="2400" height="1800" decoding="async" loading="lazy"></div><figcaption>After. One log for every email, call and letter, with templates beside it.</figcaption></figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- Rules instead of a fixed flow -->
+        <section class="block">
+            <h2>Rules instead of a fixed flow</h2>
+            <p>The team planned to hard-code which documents and emails follow each status change. But nobody, including the client, knew the full process and its edge cases. I proposed automation rules instead: an admin picks a trigger, sets conditions and chooses an action. That let us move on without a complete spec, because changing a rule doesn't need a developer. It also fits the client's plan to offer the platform to partner lenders who work differently.</p>
+            <dl class="constraints compare">
+                <div class="constraint-row">
+                    <dt>Hard-coded flow</dt>
+                    <dd>A status changes, and the system sends a fixed email and asks for fixed documents. Any change to the process needs a new release.</dd>
+                </div>
+                <div class="constraint-row">
+                    <dt>Automation rules</dt>
+                    <dd>Trigger, conditions, action. An admin edits a rule, saves it disabled, tests it, then turns it on.</dd>
+                </div>
+            </dl>
+            <div class="figures">
+                <figure class="figure" data-slot="rules"><div class="media"><img src="images/rules.webp" alt="Opening a rule from the list and editing its trigger, conditions and action." width="2400" height="1800" decoding="async" loading="lazy"></div><figcaption>Opening a rule from the list and editing its trigger, conditions and action.</figcaption></figure>
+            </div>
+            <div class="tradeoff">
+                <p class="label">Trade-off</p>
+                <p>I wanted to define which status can follow which before designing the status controls. To ship the MVP on time, the team kept status changes free and used rules only for emails. Transition rules were added later.</p>
+            </div>
+        </section>
+
+        <!-- Collections as a work queue -->
+        <section class="block">
+            <h2>Collections as a work queue</h2>
+            <p>Collections needed to support a sequence of actions on an overdue loan: calls, promises to pay and follow-ups. In the earlier version, the action form and history expanded inside each loan row, pushing the rest of the queue down. I moved them into a side panel, keeping the queue visible while a manager reviews a loan or records the next action.</p>
+            <div class="figures">
+                <div class="pair">
+                    <figure class="figure" data-slot="staging-collections"><div class="media"><img src="images/staging-collections.webp" alt="Before. The action form and history expand inside the loan row." width="2400" height="1800" decoding="async" loading="lazy"></div><figcaption>Before. The action form and history expand inside the loan row.</figcaption></figure>
+                    <figure class="figure" data-slot="collections"><div class="media"><img src="images/collections.webp" alt="After. Action history in a side panel, with the collections queue still visible." width="2400" height="1800" decoding="async" loading="lazy"></div><figcaption>After. Action history in a side panel, with the collections queue still visible.</figcaption></figure>
+                </div>
+            </div>
+            <div class="tradeoff">
+                <p class="label">Trade-off</p>
+                <p>Not every overdue loan should be chased. Some are between people who know each other and get settled in person. So the platform leaves room for judgement: escalation stays a manager's decision, and interest on these loans can be accrued by hand instead of on a schedule.</p>
+            </div>
+        </section>
+
+        <!-- A design system that had stopped working -->
+        <section class="block">
+            <h2>A design system that had stopped working</h2>
+            <p>The platform shared a design system with two sister products, a share registry and a compliance app. I had built it about four years earlier, before Figma had variables. Its colours were a raw palette with no roles, so screens hard-coded values like gray-600, and new components piled up outside the system. I rebuilt it as two layers of tokens: primitives for colour, spacing and radius, and semantic tokens named by role, such as text-primary, surface or primary button background. I started in Figma, then moved the tokens into code when the AI tools I used turned out to work poorly with Figma.</p>
+            <div class="figures">
+                <div class="pair">
+                    <figure class="figure" data-slot="old-design-system-colors"><div class="media"><img src="images/old-design-system-colors.webp" alt="Before. A raw palette. Nothing said which colour is for text, surfaces or buttons." width="2400" height="1800" decoding="async" loading="lazy"></div><figcaption>Before. A raw palette. Nothing said which colour is for text, surfaces or buttons.</figcaption></figure>
+                    <figure class="figure" data-slot="new-semantic-tokens"><div class="media"><img src="images/new-semantic-tokens.webp" alt="After. Primitives underneath, 63 semantic tokens named by role on top." width="2400" height="1800" decoding="async" loading="lazy"></div><figcaption>After. Primitives underneath, 63 semantic tokens named by role on top.</figcaption></figure>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <nav class="read-next" data-read-next="loan-platform" aria-labelledby="read-next-title"><h2 class="read-next-title" id="read-next-title">Read next</h2><div class="case-grid"><a class="work-card work-card--small" data-slug="release-groups" data-side="right" href="../../cases/release-groups/"><span class="work-card-media"><img src="../../cases/release-groups/images/hero.webp" alt="" width="2400" height="1800" loading="lazy" decoding="async"></span><div class="work-card-body"><h3 class="work-card-title"><span class="work-card-title-text">Rolling out updates to client devices in stages</span></h3><p class="work-card-tags">Internal tools · B2B · Web app</p></div></a><a class="work-card work-card--small" data-slug="property-documents" data-side="right" href="../../cases/property-documents/"><span class="work-card-media"><img src="../../cases/property-documents/images/hero.webp" alt="" width="2400" height="1800" loading="lazy" decoding="async"></span><div class="work-card-body"><h3 class="work-card-title"><span class="work-card-title-text">One request for every document a property sale needs</span></h3><p class="work-card-tags">Legal tech · B2B · Web app</p></div></a><a class="work-card work-card--small" data-slug="wawi-audit" data-side="right" href="../../cases/wawi-audit/"><span class="work-card-media"><img src="../../cases/wawi-audit/images/thumbnail.webp?v=thumb-ea1454817962" alt="" width="2400" height="1800" loading="lazy" decoding="async"></span><div class="work-card-body"><h3 class="work-card-title"><span class="work-card-title-text">Auditing order creation in a bakery ERP</span></h3><p class="work-card-tags">B2B · ERP · UX audit</p></div></a></div></nav>
+
+    <!-- Site footer (same content and links as the home page) -->
+    <footer class="site-footer">
+        <div class="footer-links">
+            <a href="../../llms.txt">Text overview</a>
+            <span class="footer-separator" aria-hidden="true">/</span>
+            <a href="mailto:dmitriytanets@gmail.com">dmitriytanets@gmail.com</a>
+            <span class="footer-separator" aria-hidden="true">/</span>
+            <a href="https://www.linkedin.com/in/dmitriytanets/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <span class="footer-separator" aria-hidden="true">/</span>
+            <a href="https://dribbble.com/dmitriyt95" target="_blank" rel="noopener noreferrer">Dribbble</a>
+        </div>
+        <a class="back-to-top" href="#"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-up"></use></svg><span>Back to top</span></a>
+    </footer>
+
+    <script src="case.js"></script>
+</body>
+</html>

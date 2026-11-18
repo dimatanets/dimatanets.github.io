@@ -1,0 +1,372 @@
+/* Release groups case: animated "Move multiple devices" wizard.
+   Self-contained figure. The page that embeds it also loads:
+   - Plus Jakarta Sans 400/500/700 from Google Fonts (see wizard.html),
+   - wizard.js, which builds the stage inside every [data-rg-wizard] element.
+   Source of truth: Figma 41FTN2v2LSgy0IDq5rANIH, page release-groups,
+   frames 240:7313, 245:7342, 245:7522, 245:7592. All sizes below are stage px (1600×1200). */
+
+.rgw {
+  --rgw-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  --rgw-primary: #2196F3;
+  --rgw-primary-dark: #1976D2;
+  --rgw-text: rgba(0, 0, 0, 0.87);
+  --rgw-text-2: rgba(0, 0, 0, 0.6);
+  --rgw-hover: rgba(0, 0, 0, 0.04);
+  --rgw-line: #E0E0E0;
+
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--media-radius, 8px);
+  background: #FAFAFA;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+/* Hairline like the case page figures, drawn on top so it never changes the stage geometry */
+.rgw::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px var(--media-border, rgba(0, 0, 0, 0.06));
+  pointer-events: none;
+}
+
+/* Built at 1600×1200, scaled as one unit by wizard.js */
+.rgw-stage {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1600px;
+  height: 1200px;
+  transform-origin: 0 0;
+  background: #FAFAFA;
+  font-family: var(--rgw-font);
+  font-weight: 400;
+  color: var(--rgw-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+}
+.rgw-stage *,
+.rgw-stage *::before,
+.rgw-stage *::after { box-sizing: border-box; margin: 0; padding: 0; }
+.rgw-stage img { display: block; max-width: none; }
+
+/* ── Dialog (<Paper>) ── */
+.rgw-paper {
+  position: absolute;
+  left: 350px;
+  top: 100px;
+  width: 900px;
+  height: 1000px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+/* 1px inside border, drawn on top so children keep the frame coordinates (measured from the outer edge) */
+.rgw-paper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px #E5E5E5;
+  pointer-events: none;
+}
+.rgw-paper .a { position: absolute; }
+
+.rgw-title {
+  left: -1px; top: -1px;
+  width: 700px; height: 80px;
+  padding: 20px 30px;
+  font-size: 25px; line-height: 40px; font-weight: 500;
+  letter-spacing: 0.1875px;
+  white-space: nowrap;
+}
+.rgw-hr { left: -1px; width: 900px; height: 1.25px; background: rgba(0, 0, 0, 0.12); }
+.rgw-hr-top { top: 80px; }
+.rgw-hr-bottom { top: 893.75px; }
+.rgw-vr { left: 258.125px; top: 81.25px; width: 1.25px; height: 812.5px; background: var(--rgw-line); }
+
+/* Everything that fades out and back in when the loop restarts */
+.rgw-body { position: absolute; inset: 0; transition: opacity 300ms ease; }
+.rgw-body.is-faded { opacity: 0; }
+
+/* ── Stepper ── */
+.rgw-step-icon {
+  left: 30px;
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.38);
+  color: #fff;
+  font-size: 15px; line-height: 24.9px;
+  letter-spacing: 0.5px;
+  display: flex; align-items: center; justify-content: center;
+  transition: background-color 200ms ease;
+}
+.rgw-step-icon img { position: absolute; inset: 0; width: 30px; height: 30px; opacity: 0; }
+.rgw-step.is-active .rgw-step-icon { background: var(--rgw-primary); }
+.rgw-step.is-done .rgw-step-icon { background: transparent; }
+.rgw-step.is-done .rgw-step-icon span { opacity: 0; }
+.rgw-step.is-done .rgw-step-icon img { opacity: 1; }
+
+.rgw-connector { left: 44.375px; width: 1.25px; height: 20px; background: #BDBDBD; }
+
+/* Label starts 15px after the icon and is centred on it; pending = Regular 60%, active and done = Medium 87%.
+   It spans the whole column up to the divider, so it never shrink-wraps, wraps or gets cut. */
+.rgw-step-label {
+  left: 75px;
+  width: 183px;
+  height: 30px;
+  overflow: visible;
+  display: flex; align-items: center;
+  font-size: 17.5px; line-height: 25.025px;
+  letter-spacing: 0.2125px;
+  color: var(--rgw-text-2);
+  white-space: nowrap;
+  transition: color 200ms ease;
+}
+.rgw-step.is-active .rgw-step-label,
+.rgw-step.is-done .rgw-step-label {
+  font-weight: 500;
+  line-height: 27.475px;
+  letter-spacing: 0.125px;
+  color: var(--rgw-text);
+}
+
+/* ── Right side: one panel per step ── */
+.rgw-panel {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 100ms ease, transform 0s linear 100ms, visibility 0s linear 100ms;
+}
+.rgw-panel.is-current {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: opacity 240ms ease-out 100ms, transform 240ms ease-out 100ms, visibility 0s;
+}
+
+.rgw-h {
+  left: 288.75px; top: 111.25px;
+  font-size: 22.5px; line-height: 32.5px; font-weight: 500;
+  letter-spacing: 0.1875px;
+  white-space: nowrap;
+}
+
+/* Outlined text field: 50px tall, stroke inside like in Figma */
+.rgw-search {
+  left: 288.75px; top: 158.75px;
+  height: 50px;
+  border: 1.25px solid rgba(0, 0, 0, 0.23);
+  border-radius: 5px;
+  padding: 0 13.75px;
+  display: flex; align-items: center;
+  font-size: 20px; line-height: 30px;
+  letter-spacing: 0.1875px;
+  color: rgba(0, 0, 0, 0.38);
+}
+.rgw-search img { position: absolute; right: 14px; top: 8.75px; width: 30px; height: 30px; }
+
+/* Selectable list items (company, group) */
+.rgw-list { left: 288.75px; width: 581.25px; overflow: hidden; }
+.rgw-item {
+  position: absolute;
+  left: 0;
+  width: 581.25px; height: 60px;
+  background: #fff;
+  border: 1.25px solid var(--rgw-line);
+  border-radius: 5px;
+  padding-left: 18.75px;
+  display: flex; align-items: center;
+  font-size: 17.5px; line-height: 27.5px;
+  letter-spacing: 0.2125px;
+  white-space: nowrap;
+  transition: background-color 150ms ease, border-color 150ms ease;
+}
+.rgw-item img { position: absolute; right: 13.75px; top: 13.75px; width: 30px; height: 30px; opacity: 0; transition: opacity 150ms ease; }
+.rgw-item.is-hover { background-color: #F5F5F5; } /* white + rgba(0,0,0,0.04) */
+.rgw-item.is-selected { border-color: var(--rgw-primary); }
+.rgw-item.is-selected img { opacity: 1; }
+
+/* ── Step 2: devices table ── */
+.rgw-chip {
+  left: 462.5px; top: 115px;
+  height: 25px;
+  padding: 0 7.5px;
+  border-radius: 125px;
+  background: #EBEBEB;
+  display: flex; align-items: center;
+  font-size: 15px; line-height: 22.5px;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 150ms ease;
+}
+.rgw-chip span { text-box: trim-both cap alphabetic; }
+.rgw-chip.is-shown { opacity: 1; }
+
+.rgw-th {
+  top: 228.75px;
+  font-size: 15px; line-height: 22.5px; font-weight: 500;
+  color: var(--rgw-text-2);
+  white-space: nowrap;
+}
+.rgw-sort { width: 22.5px; height: 22.5px; }
+
+.rgw-cb { width: 30px; height: 30px; }
+.rgw-cb i {
+  position: absolute;
+  left: 3.75px; top: 3.75px;
+  width: 22.5px; height: 22.5px;
+  border: 2.5px solid rgba(0, 0, 0, 0.54);
+  border-radius: 2.5px;
+}
+.rgw-cb img { position: absolute; inset: 0; width: 30px; height: 30px; opacity: 0; }
+.rgw-cb.is-on i { opacity: 0; }
+.rgw-cb.is-on img { opacity: 1; }
+
+.rgw-rows { left: 288.75px; width: 581.25px; overflow: hidden; }
+.rgw-band { position: absolute; left: 0; width: 100%; height: 77.5px; transition: background-color 150ms ease; }
+.rgw-band.is-hover { background-color: var(--rgw-hover); }
+.rgw-rule { position: absolute; left: 0; width: 100%; height: 1.25px; margin-top: -0.625px; background: var(--rgw-line); }
+.rgw-row { position: absolute; left: 0; width: 100%; height: 52.5px; }
+.rgw-row .rgw-cb { position: absolute; left: 0; top: 11.25px; }
+.rgw-td {
+  position: absolute;
+  font-size: 17.5px; line-height: 25px;
+  letter-spacing: 0.2125px;
+  white-space: nowrap;
+}
+.rgw-td.is-sub { top: 27.5px; letter-spacing: 0; color: var(--rgw-text-2); }
+.rgw-td.is-mid { top: 13.75px; }
+
+/* ── Step 4: confirmation ── */
+.rgw-summary { left: 288.75px; top: 163.75px; width: 581.25px; height: 50px; display: flex; gap: 30px; }
+.rgw-summary > div { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 2.5px; }
+.rgw-summary > hr { flex: none; width: 1.25px; height: 50px; border: 0; background: var(--rgw-line); }
+.rgw-summary dt { font-size: 15px; line-height: 22.5px; font-weight: 500; color: var(--rgw-text-2); }
+.rgw-summary dd { font-size: 17.5px; line-height: 25px; letter-spacing: 0.2125px; }
+
+.rgw-alert {
+  left: 288.75px; top: 233.75px;
+  width: 581.25px; height: 75px;
+  border-radius: 5px;
+  background: #E5F6FD;
+}
+.rgw-alert img { position: absolute; left: 20px; top: 15px; width: 27.5px; height: 27.5px; }
+.rgw-alert p {
+  position: absolute;
+  left: 62.5px; width: 498.75px;
+  font-size: 15px; line-height: 22.5px;
+  letter-spacing: 0.2125px;
+  color: #014361;
+}
+.rgw-alert b { font-weight: 700; }
+
+/* ── Footer (<DialogActions>) ── */
+.rgw-actions {
+  left: -1px; bottom: 0;
+  width: 900px; height: 105px;
+  padding: 30px;
+  display: flex; align-items: center; justify-content: flex-end; gap: 20px;
+}
+.rgw-btn {
+  position: relative;
+  height: 45px;
+  border-radius: 5px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17.5px; line-height: 30px; font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.rgw-btn-outlined {
+  padding: 0 18.75px;
+  border: 1.25px solid rgba(33, 150, 243, 0.5);
+  color: var(--rgw-primary);
+}
+.rgw-btn-contained {
+  padding: 0 20px;
+  background: var(--rgw-primary);
+  color: #fff;
+  box-shadow: 0 1.25px 6.25px rgba(0, 0, 0, 0.12), 0 2.5px 2.5px rgba(0, 0, 0, 0.14), 0 3.75px 1.25px -2.5px rgba(0, 0, 0, 0.2);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.rgw-btn-contained.is-hover { background: var(--rgw-primary-dark); }
+.rgw-btn-contained.is-pressed {
+  box-shadow: 0 2.5px 5px -1.25px rgba(0, 0, 0, 0.2), 0 5px 6.25px rgba(0, 0, 0, 0.14), 0 1.25px 12.5px rgba(0, 0, 0, 0.12);
+}
+.rgw-ripple {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 240px; height: 240px;
+  margin: -120px 0 0 -120px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0;
+  transform: scale(0);
+}
+.rgw-btn.is-pressed .rgw-ripple { animation: rgw-ripple 700ms cubic-bezier(0.4, 0, 0.2, 1); }
+@keyframes rgw-ripple {
+  0%   { transform: scale(0); opacity: 0.3; }
+  65%  { transform: scale(1); opacity: 0.3; }
+  100% { transform: scale(1); opacity: 0; }
+}
+
+/* ── Cursor: frosted glass circle ── */
+.rgw-cursor {
+  position: absolute;
+  left: -16px; top: -16px;
+  width: 32px; height: 32px;
+  opacity: 0;
+  transition: opacity 300ms ease;
+  will-change: transform;
+}
+.rgw-cursor.is-shown { opacity: 1; }
+.rgw-cursor i {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  /* Glass ring: see-through centre (no blur) so the element under it stays readable; the edge carries the contrast */
+  background: rgba(255, 255, 255, 0.18);
+  border: 1.5px solid #fff;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.12), 0 6px 20px rgba(0, 0, 0, 0.18);
+}
+.rgw-cursor.is-pressing i { animation: rgw-press 260ms ease-in-out; }
+@keyframes rgw-press {
+  0%   { transform: scale(1); }
+  45%  { transform: scale(0.85); }
+  100% { transform: scale(1); }
+}
+.rgw-ring {
+  position: absolute;
+  left: -16px; top: -16px;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0, 0, 0, 0.18);
+  opacity: 0;
+}
+.rgw-ring.is-on { animation: rgw-ring 520ms ease-out; }
+@keyframes rgw-ring {
+  0%   { opacity: 0.9; scale: 1; }
+  100% { opacity: 0; scale: 2.2; }
+}
+
+/* Reset between loops without visible transitions */
+.rgw-instant,
+.rgw-instant * { transition: none !important; }
+
+/* Reduced motion: static Confirmation, no cursor */
+.rgw-static .rgw-cursor,
+.rgw-static .rgw-ring { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  .rgw-stage,
+  .rgw-stage * { transition: none !important; animation: none !important; }
+}

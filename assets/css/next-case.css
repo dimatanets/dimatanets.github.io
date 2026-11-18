@@ -1,0 +1,21 @@
+/* Read next sits outside the narrow article, aligned with homepage content. */
+.read-next[hidden] { display: none; }
+.read-next {
+  width: min(var(--work-content-width), 100% - 2 * var(--side));
+  margin-inline: auto;
+  border-top: 1px solid var(--line);
+  padding-block: 48px var(--section-gap);
+}
+.read-next-title {
+  margin: 0 0 48px;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 36px;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+@media (max-width: 640px) {
+  .read-next { padding-top: 40px; }
+  .read-next-title { font-size: 24px; line-height: 32px; margin-bottom: 40px; }
+}

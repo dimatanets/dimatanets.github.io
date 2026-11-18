@@ -1,0 +1,93 @@
+# Dmytro Tanets — Product Designer
+
+> Product designer focused on B2B and enterprise software, with work in lending, legal document workflows, ERP, retail operations and developer tools. The selected case studies describe personal contributions, design decisions, constraints and implementation status.
+
+This is a public text overview of the portfolio, with links to the corresponding case studies. Updated 18 November 2026.
+
+## Profile and contact
+
+- Name: Dmytro Tanets
+- Role: Product Designer / UX Designer
+- Location: Oradea, Romania
+- Experience: 10+ years in design; current focus on B2B and enterprise software
+- Additional method experience: usability testing with representative users completing tasks
+- Email: dmitriytanets@gmail.com
+- [Portfolio home](./)
+- [CV — PDF](Dmytro-Tanets-CV.pdf)
+- [LinkedIn](https://www.linkedin.com/in/dmitriytanets/)
+- [Dribbble](https://dribbble.com/dmitriyt95)
+
+## Experience demonstrated in the selected work
+
+- Product design and interaction design: workflows, forms, tables, filters, navigation and interface states for business applications.
+- Information architecture: separating applications from active loans; consolidating communication tools; modelling property-document requests across three roles.
+- UX audits and product analytics: PostHog page metrics, click heatmaps, session replay analysis, stakeholder input and prioritisation in WaWiAssist.
+- Heuristic review: reviewing an existing loan platform against usability heuristics.
+- Prototyping: Figma wireframes and interactive coded prototypes, including AI-assisted prototyping with Claude Code and Antigravity.
+- Design tokens and reusable components: primitive and semantic tokens, shared components and adaptation of existing component libraries.
+- Developer tools and internal tools: background-job monitoring, task states, logs, JSON payloads and software rollouts to client devices.
+- Collaboration: requirements and trade-offs discussed with product owners, founders, project managers, support, CTOs and developers, as described in each case.
+
+Tools named in the case studies include Figma, PostHog, Microsoft Clarity, Claude Code, Claude Design, Antigravity and Gemini. AI-assisted prototyping describes the design workflow; it does not imply that each product includes AI features.
+
+## Selected case studies
+
+### Loan platform — lending / fintech / B2B
+
+[Turning three vibe-coded versions into one loan platform](cases/loan-platform/)
+
+A loan management platform for an Australian private lender. As the sole product designer, Dmytro consolidated three working versions, separated applications and active loans, simplified navigation, brought communications together, designed editable automation rules and moved collections actions into a side panel. The work included coded prototypes, five team review rounds and primitive and semantic design tokens.
+
+Status in the current case: in development; the development team builds on the resulting structure. Team: product owner, project manager, three developers and one QA. Timeline: July–August 2026, about four weeks. The case does not report measured business impact.
+
+### Release groups — internal tools / B2B / staged software rollouts
+
+[Rolling out updates to client devices in stages](cases/release-groups/)
+
+A new section of HS-Soft's internal device console for support teams managing point-of-sale (POS) and self-checkout devices. Dmytro designed release groups, group update rules, rollout status, pause and abort, and a confirmation wizard for moving devices between groups. The work used the console's existing MUI components and involved the CTO, Head of Support, QA lead and developers.
+
+Status: shipped. Timeline: December 2025, about a month. Release-group management is separate from the daytime POS-update interaction, which was not released. No measured time saving is reported in the current case.
+
+### WaWiAssist — enterprise resource planning (ERP) / UX audit / analytics
+
+[Auditing order creation in a bakery ERP](cases/wawi-audit/)
+
+Dmytro used PostHog page metrics and stakeholder priorities to choose an audit focus, then reviewed session recordings and heatmaps, logged actions and mapped order creation. Proposals addressed repeated navigation, a hidden customer-filter value and search matches excluded by the active filter. A measurement plan and PostHog tracking were prepared for order creation time, customer selection time, repeated navigation and repeated filter changes.
+
+Status: partly implemented. The first stage of the sidebar was built; navigation and filter proposals entered the backlog; expanded search was rejected because of database constraints. No post-release measurements are available. Timeline: late 2025, about two months. Session replay analysis is distinct from a moderated usability test.
+
+### Property documents — legal tech / B2B / multi-role workflows
+
+[One request for every document a property sale needs](cases/property-documents/)
+
+Velocity Documents prepares documents needed to list an Australian property. Dmytro worked as the sole product designer with the CEO, project manager and developers to simplify the scope and model each request as a list of documents with sources and statuses. The design covers seller, agent and manager applications, address lookup with manual alternatives, account setup before payment, and shared tokens and components. Wireframes and coded prototypes were reviewed by the team.
+
+Status: in development, with part of the system handling real documents for client testing. Timeline: August–September 2026, about four weeks. Client testing is not presented as evidence of a full production launch or measured improvement.
+
+### Receipt search — retail analytics / back-office software / large datasets
+
+[Searching receipts without hitting the table limit](cases/receipt-search/)
+
+CashAssist Web is HS-Soft's back-office application for managing cash registers and reviewing sales data. Dmytro reviewed session recordings and heatmaps, explored three search layouts, designed grouped filters with visible applied conditions, search progress and cancellation, a file download for results too large for the table, and receipt details in a drawer. He discussed the alternatives with the CTO and developer and reviewed implementation.
+
+Status: shipped. Timeline: June 2026. Background search and completion notifications were planned for a later stage; they are distinct from the shipped progress and cancellation states. The 50 MB figure is a display constraint described in the case, not an impact metric.
+
+### Async Task Service — developer tools / operations / task monitoring
+
+[Monitoring background tasks in one dashboard](cases/async-task-service/)
+
+Dmytro redesigned a background-job dashboard for HS-Soft's operations and engineering teams, starting from a functional HTML prototype and detailed developer brief. The main flows already existed. His work made the status filter explicit, replaced the label Partial with Completed with errors, kept Running and Stuck visible as separate status and warning labels, and used a side panel for progress, timings, JSON payloads, event logs and task actions.
+
+The case documents interface design. It does not state an implementation date or release status. Tools: Figma and Gemini.
+
+### WizMenu — restaurant software / QR menus / content management
+
+[Designing WizMenu for owners and guests](cases/wizmenu/)
+
+Dmytro designed the admin panel and reworked an existing guest-menu design. The case describes input from local café owners, a shared Section → Category → Item tree, saved drafts, preview before publication, side-by-side translation editing, and guest navigation informed by Clarity session replays. Brand customisation uses a limited set of colours and fonts. Waiter tools and table management were explored early and left outside the first version.
+
+Status: live with early users at a few local venues before a commercial launch. Team: founder, developers and QA at different stages. The case does not claim a measured usability improvement.
+
+## Reading the evidence
+
+Implementation status is stated separately for each project. Design artefacts and team reviews show the design work; they do not by themselves establish user-test results or measured business impact. The current case studies above contain the detailed explanations and visual examples.

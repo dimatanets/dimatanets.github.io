@@ -45,10 +45,12 @@
 })();
 
 /* ── Case page × button (desktop) and "Back" link (mobile): back to the work list, no scroll animation ── */
-document.querySelectorAll('a.close-btn, a.back-link').forEach(closeLink => {
+document.querySelectorAll('a.close-btn, a.back-link, a.nav-link-work').forEach(closeLink => {
   closeLink.addEventListener('click', e => {
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    try { sessionStorage.setItem('portfolio-work-return', new URL(closeLink.href).href); } catch (_) { /* Home links also work without storage. */ }
     // Came here from the home page: step back in history so the browser restores
-    // the exact previous scroll position instantly. Otherwise follow the link (jumps to #work).
+    // the previous page. Otherwise follow the clean home link.
     let fromHome = false;
     try {
       const ref = new URL(document.referrer);
@@ -142,7 +144,7 @@ document.querySelectorAll('.animated-link').forEach(link => {
 });
 
 /* ── Header "Work" link: smooth scroll down to the case list ── */
-document.querySelectorAll('a[href="#work"]').forEach(link => {
+document.querySelectorAll('a[data-work-link]').forEach(link => {
   link.addEventListener('click', e => {
     const target = document.getElementById('work');
     if (!target) return;

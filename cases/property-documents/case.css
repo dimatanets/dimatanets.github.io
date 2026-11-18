@@ -1,0 +1,432 @@
+/* Case page: property documents. Same styles as the loan platform case, plus image placeholders,
+   a multi-frame crossfade and a constraints list without labels. */
+
+:root {
+  /* Base colours and fonts from the current portfolio */
+  --bg: #ffffff;
+  --ink: #111111;   /* headings, links, controls */
+  --text: #262626;  /* body text */
+  --muted: #666666;
+  --line: rgba(17, 17, 17, 0.12);
+  --link-underline: rgba(17, 17, 17, 0.28);
+
+  --serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --sans: 'Switzer', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+
+  /* Layout */
+  --content-width: 880px;
+  --side: 24px;
+  --site-side: 24px;
+  --section-gap: 112px;
+
+  /* Figures: change the corner radius here, in one place */
+  --media-radius: 8px;
+  --media-border: rgba(0, 0, 0, 0.06);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 18px;
+  line-height: 30px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img { display: block; }
+p, figcaption { text-wrap: pretty; }
+
+/* ── Icons: inline SVG symbols from the sprite in index.html ── */
+.icon-sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+.icon { width: 16px; height: 16px; flex: none; display: block; }
+.icon-20 { width: 20px; height: 20px; }
+
+a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--link-underline);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.2s;
+}
+a:hover { text-decoration-color: var(--ink); }
+a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 2px; }
+
+/* ── Case content stays centred; site chrome follows the home page ── */
+.page {
+  width: min(var(--content-width), 100% - 2 * var(--side));
+  margin-inline: auto;
+}
+.page { padding: 72px 0 var(--section-gap); }
+.block + .block,
+.block + .figure,
+.figure + .block { margin-top: var(--section-gap); }
+
+/* ── Type ── */
+h1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 56px;
+  line-height: 60px;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 36px;
+  letter-spacing: -0.01em;
+  margin-bottom: 20px;
+  color: var(--ink);
+  text-wrap: balance;
+}
+h3 {
+  font-size: 18px;
+  line-height: 30px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.label,
+dt,
+figcaption {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--muted);
+}
+
+/* ── Site header: full width, same height and gutters as the home page ── */
+.site-header {
+  height: 64px;
+  padding: 0 var(--site-side);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.brand { display: flex; align-items: center; gap: 16px; text-decoration: none; }
+.brand-text { display: flex; flex-direction: column; gap: 8px; line-height: 1; white-space: nowrap; }
+.brand-name { font-size: 16px; font-weight: 500; letter-spacing: -0.01em; color: var(--ink); }
+.brand-role { font-size: 14px; letter-spacing: -0.01em; color: var(--muted); }
+
+.links { display: flex; align-items: center; gap: 24px; }
+.nav-link {
+  font-size: 14px;
+  line-height: 20px;
+  white-space: nowrap;
+  text-decoration-color: transparent;
+}
+.nav-link:hover { text-decoration-color: var(--ink); }
+.label-short { display: none; }
+.button {
+  height: 40px;
+  padding: 0 16px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 1000px;
+  background: var(--ink);
+  color: var(--bg);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.button:hover { opacity: 0.88; }
+
+/* ── Case header ── */
+.back {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  font-size: 14px;
+  line-height: 20px;
+}
+.case-header .label { margin-top: 24px; }
+.case-header h1 { margin-top: 16px; }
+.lede {
+  margin-top: 24px;
+  font-size: 20px;
+  line-height: 32px;
+  color: var(--muted);
+}
+
+/* Lead + meta read as one group (32px), the hero stands apart (96px) */
+.meta {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px 32px;
+}
+dt { margin-bottom: 4px; }
+dd { font-size: 16px; line-height: 24px; }
+
+.case-header + .hero { margin-top: 96px; }
+
+/* ── Shared labels for summary and constraints ── */
+.summary .label,
+.constraints dt {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ── Summary and constraints: label on the left, explanation on the right ── */
+.summary .row,
+.constraint-row {
+  display: grid;
+  grid-template-columns: 176px minmax(0, 1fr);
+  align-items: baseline;
+  gap: 24px;
+  padding: 24px 0;
+}
+.summary .row:first-child,
+.constraint-row:first-child { padding-top: 0; }
+.summary .row:last-child,
+.constraint-row:last-child { padding-bottom: 0; }
+.summary .row + .row,
+.constraint-row + .constraint-row { border-top: 1px solid var(--line); }
+.constraints dd { font-size: inherit; line-height: inherit; }
+
+/* Constraints as plain statements, no label column */
+.constraint-list { list-style: none; }
+.constraint-list li { padding: 24px 0; }
+.constraint-list li:first-child { padding-top: 0; }
+.constraint-list li:last-child { padding-bottom: 0; }
+.constraint-list li + li { border-top: 1px solid var(--line); }
+
+/* ── Fixed flow vs rules ── */
+.compare { margin-top: 40px; }
+.compare .row + .row {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+.compare h3 { margin-bottom: 4px; }
+
+/* ── Figures: 4:3, caption underneath ── */
+.figures { margin-top: 48px; }
+.figure + .figure { margin-top: 48px; }
+
+.media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--media-border);
+  border-radius: var(--media-radius);
+  overflow: hidden;
+}
+.media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+figcaption { margin-top: 12px; }
+
+/* Before/After pair: two equal figures on one row, Before on the left */
+.pair,
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: start;
+}
+/* 2x2 artifacts: 16px between columns; rows get more room so each caption stays with its own image */
+.grid-2 { row-gap: 40px; }
+.pair + .pair { margin-top: 48px; }
+.pair .figure + .figure,
+.grid-2 .figure + .figure { margin-top: 0; }
+
+/* Figure that opens in the lightbox */
+.zoom {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+  cursor: zoom-in;
+  border-radius: var(--media-radius);
+}
+.zoom:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+/* Image slot still waiting for its file: plain 4:3 box, no text inside */
+.media.placeholder { background: #f0f0f0; }
+
+/* Crossfade: frames listed in case.js; only the active one is visible */
+.crossfade img { position: absolute; inset: 0; opacity: 0; transition: opacity 600ms ease; }
+.crossfade img.is-active { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .crossfade img { transition: none; }
+}
+
+/* ── Trade-off notes ── */
+.tradeoff {
+  margin-top: 48px;
+  padding: 24px 28px;
+  border: 1px solid var(--line);
+  border-radius: var(--media-radius);
+}
+.tradeoff .label { margin-bottom: 6px; }
+
+/* ── Site footer: full width, same gutters as the home page ── */
+.site-footer {
+  padding: 28px var(--site-side);
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+  font-size: 14px;
+  line-height: 20px;
+}
+.footer-links { display: flex; align-items: center; flex-wrap: wrap; }
+.site-footer a {
+  color: var(--muted);
+  text-decoration-color: transparent;
+  transition: color 0.15s, text-decoration-color 0.2s;
+}
+.site-footer a:hover { color: var(--ink); text-decoration-color: var(--ink); }
+.footer-separator { color: #aaaaaa; margin: 0 8px; }
+.back-to-top { display: flex; align-items: center; gap: 6px; }
+
+/* ── Lightbox: zoom in place ── */
+html.lightbox-open { overflow: hidden; }
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  cursor: zoom-out;
+}
+.lightbox[hidden] { display: none; }
+
+/* Fully opaque, same colour as the page */
+.lb-backdrop {
+  position: absolute;
+  inset: 0;
+  background: var(--bg);
+  opacity: 0;
+  transition: opacity 250ms ease-out;
+}
+.lightbox.is-open .lb-backdrop { opacity: 1; }
+
+/* Position and size are set in case.js (fitted rect); FLIP runs on transform */
+.lb-img {
+  position: fixed;
+  left: 0;
+  top: 0;
+  max-width: none;
+  object-fit: cover;
+  border-radius: var(--media-radius);
+  transform-origin: 0 0;
+}
+.lb-img.is-animating { transition: transform 250ms ease-out, border-radius 250ms ease-out; }
+.lb-img-next { opacity: 0; pointer-events: none; }
+.lb-img-next.is-visible { opacity: 1; transition: opacity 150ms ease; }
+
+/* Caption appears once the zoom has finished */
+.lb-caption {
+  position: fixed;
+  left: 0;
+  top: 0;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--muted);
+  text-align: center;
+  opacity: 0;
+}
+.lightbox.is-zoomed .lb-caption { opacity: 1; transition: opacity 150ms ease; }
+
+.lb-btn {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--bg);
+  color: var(--ink);
+  cursor: pointer;
+}
+.lb-btn[hidden] { display: none; }
+.lb-btn:disabled { opacity: 0.3; cursor: default; }
+.lb-btn:focus-visible { outline: 2px solid var(--ink); outline-offset: 0; }
+.lb-close { top: 12px; right: 12px; }
+.lb-prev,
+.lb-next { top: 50%; margin-top: -20px; }
+.lb-prev { left: 12px; }
+.lb-next { right: 12px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .lb-backdrop,
+  .lb-img.is-animating,
+  .lb-img-next.is-visible,
+  .lightbox.is-zoomed .lb-caption { transition: none; }
+}
+
+/* ── Smaller screens ── */
+@media (max-width: 1024px) {
+  :root { --section-gap: 96px; }
+}
+@media (max-width: 767px) {
+  /* Pairs and the artifacts grid stack in order, with the same spacing as other stacked figures */
+  .pair,
+  .grid-2 { grid-template-columns: 1fr; gap: 48px; }
+  .lb-close { top: 4px; right: 4px; }
+  .lb-prev { left: 4px; }
+  .lb-next { right: 4px; }
+}
+@media (max-width: 640px) {
+  :root { --section-gap: 72px; }
+  body { font-size: 16px; line-height: 26px; }
+  h1 { font-size: 36px; line-height: 40px; }
+  h2 { font-size: 24px; line-height: 32px; }
+  .page { padding-top: 48px; }
+  .lede { font-size: 18px; line-height: 30px; }
+  .meta { margin-top: 24px; grid-template-columns: repeat(2, 1fr); gap: 20px 24px; }
+  .summary .row,
+  .constraint-row { grid-template-columns: minmax(0, 1fr); gap: 6px; padding-block: 20px; }
+  .case-header + .hero { margin-top: 64px; }
+  .figures, .tradeoff { margin-top: 40px; }
+  .tradeoff { padding: 20px; }
+  .figure + .figure { margin-top: 40px; }
+  .pair,
+  .grid-2 { gap: 40px; }
+  .pair + .pair { margin-top: 40px; }
+}
+@media (max-width: 600px) {
+  :root { --site-side: 16px; }
+  .brand-text { display: none; } /* logo only, so all three header links fit (as on the home page) */
+  .links { gap: 16px; }
+  .site-footer { flex-direction: column; align-items: flex-start; gap: 16px; }
+}
+@media (max-width: 359px) {
+  .links { gap: 12px; }
+  .label-long { display: none; }
+  .label-short { display: inline; }
+}
+
+/* The checkout movie shares the still images' reserved 4:3 frame (same as the release-groups wizard). */
+.media video, .media .video-poster { display: block; width: 100%; height: 100%; object-fit: cover; }
+.media video { position: absolute; inset: 0; visibility: hidden; }
+.media.is-playing video { visibility: visible; }
+.media.is-playing .video-poster { visibility: hidden; }
+
+/* Lightbox movie: the poster (lbImg) shows until the movie plays on top of it */
+.lb-video { visibility: hidden; }
+.lb-video.is-playing { visibility: visible; }

@@ -1,0 +1,54 @@
+/* Shared editorial table. Uses the portfolio's existing colour and type tokens. */
+.content-table-wrap {
+  max-width: 100%;
+  margin-top: 48px;
+  overflow-x: auto;
+  border: 1px solid var(--line, rgba(17, 17, 17, 0.12));
+  border-radius: var(--media-radius, 8px);
+  background: var(--bg, #fff);
+}
+
+.content-table-wrap:focus-visible {
+  outline: 2px solid var(--ink, #111);
+  outline-offset: 3px;
+}
+
+.content-table {
+  width: 100%;
+  min-width: 620px;
+  border-collapse: collapse;
+  color: var(--text, #262626);
+  font-family: var(--sans, sans-serif);
+  font-size: 16px;
+  line-height: 24px;
+  text-align: left;
+}
+
+.content-table th,
+.content-table td {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--line, rgba(17, 17, 17, 0.12));
+  vertical-align: middle;
+  font-weight: 400;
+}
+
+.content-table thead th {
+  background: #fafafa;
+  color: var(--muted, #666);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+}
+
+.content-table tbody tr:last-child > * { border-bottom: 0; }
+.content-table th:first-child { width: 40%; }
+.content-table td,
+.content-table thead th:not(:first-child) { text-align: right; }
+.content-table td { font-variant-numeric: tabular-nums; }
+.content-table--priorities td:last-child { color: var(--ink, #111); font-weight: 500; }
+
+@media (max-width: 640px) {
+  .content-table-wrap { margin-top: 40px; }
+  .content-table th,
+  .content-table td { padding: 14px 16px; }
+}

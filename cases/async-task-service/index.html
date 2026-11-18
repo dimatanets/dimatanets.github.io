@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Monitoring background tasks in one dashboard · Dmytro Tanets</title>
+    <meta name="description" content="Async Task Service runs background jobs such as CSV imports and report generation. I redesigned its monitoring dashboard for HS-Soft’s operations and engineering teams, adapting the supplied prototype to the company’s UX patterns and refining task filtering, status labels and access to task details.">
+    <link rel="icon" href="../../favicon.ico?v=portrait-20261118" sizes="32x32">
+    <link rel="icon" href="../../favicon.svg?v=portrait-20261118" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../../apple-touch-icon.png?v=portrait-20261118">
+    <link rel="manifest" href="../../site.webmanifest?v=portrait-20261118">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://api.fontshare.com">
+    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <!-- Reuse the existing case styles and components without adding CSS. -->
+    <link rel="stylesheet" href="../wawi-audit/case.css">
+    <link rel="stylesheet" href="../../assets/css/work-cards.css">
+    <link rel="stylesheet" href="../../assets/css/next-case.css">
+    <script src="../../data/cases.js" defer></script>
+    <script src="../../assets/js/case-registry.js" defer></script>
+    <script src="../../assets/js/analytics.js" defer></script>
+    <link rel="alternate" type="text/plain" href="../../llms.txt" title="Portfolio text overview">
+</head>
+<body>
+    <svg class="icon-sprite" aria-hidden="true" focusable="false">
+        <symbol id="icon-arrow-left" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14" vector-effect="non-scaling-stroke"/>
+                <path d="M5 12l6 6" vector-effect="non-scaling-stroke"/>
+                <path d="M5 12l6 -6" vector-effect="non-scaling-stroke"/>
+            </g>
+        </symbol>
+        <symbol id="icon-arrow-up" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5v14" vector-effect="non-scaling-stroke"/>
+                <path d="M18 11l-6 -6" vector-effect="non-scaling-stroke"/>
+                <path d="M6 11l6 -6" vector-effect="non-scaling-stroke"/>
+            </g>
+        </symbol>
+        <symbol id="icon-x" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 6L6 18" vector-effect="non-scaling-stroke"/>
+                <path d="M6 6l12 12" vector-effect="non-scaling-stroke"/>
+            </g>
+        </symbol>
+        <symbol id="icon-chevron-left" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 6l-6 6l6 6" vector-effect="non-scaling-stroke"/>
+            </g>
+        </symbol>
+        <symbol id="icon-chevron-right" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 6l6 6l-6 6" vector-effect="non-scaling-stroke"/>
+            </g>
+        </symbol>
+    </svg>
+
+    <header class="site-header">
+        <a class="brand" href="../../" aria-label="Dmytro Tanets, home">
+            <img src="../../images/avatar.png" width="40" height="40" alt="">
+            <span class="brand-text">
+                <span class="brand-name">Dmytro Tanets</span>
+                <span class="brand-role">Product Designer</span>
+            </span>
+        </a>
+        <nav class="links">
+            <a class="nav-link" href="../../Dmytro-Tanets-CV.pdf" download>
+                <span class="label-long">Download CV</span><span class="label-short">CV</span>
+            </a>
+            <a class="button" href="mailto:dmitriytanets@gmail.com">Get in touch</a>
+        </nav>
+    </header>
+
+    <main class="page">
+        <header class="block case-header">
+            <a class="back" href="../../" data-work-link><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-left"></use></svg><span>All work</span></a>
+            <p class="label">B2B · Developer tools · Task monitoring</p>
+            <h1>Monitoring background tasks in one dashboard</h1>
+            <p class="lede">Async Task Service runs background jobs such as CSV imports and report generation. I redesigned its monitoring dashboard for HS-Soft’s operations and engineering teams, adapting the supplied prototype to the company’s UX patterns and refining task filtering, status labels and access to task details.</p>
+            <dl class="meta">
+                <div><dt>Role</dt><dd>UX designer</dd></div>
+                <div><dt>For</dt><dd>Operations + engineering</dd></div>
+                <div><dt>Tools</dt><dd>Figma · Gemini</dd></div>
+            </dl>
+        </header>
+
+        <figure class="figure hero" data-slot="hero">
+            <div class="media"><img src="images/hero.webp?v=thumb-968b81026c77" width="4240" height="3180" alt="Async Task Service dashboard with task counts, explicit filters and a table of background jobs." decoding="async" fetchpriority="high"></div>
+        </figure>
+
+        <section class="block">
+            <h2>Starting from a functional prototype</h2>
+            <p>The development team supplied a functional HTML prototype and a detailed brief. The main flows and actions were already defined. My task was to adapt them to HS-Soft’s UX patterns and refine how task information is presented, using the existing design system.</p>
+            <div class="figures">
+                <figure class="figure" data-slot="before">
+                    <button class="zoom" type="button" aria-label="Enlarge image: Before: the supplied HTML prototype with status cards used as filters."><div class="media"><img src="images/before.webp" width="1600" height="1200" alt="The supplied HTML prototype, with task status cards above search and task type filters." decoding="async" loading="lazy"></div></button>
+                    <figcaption>Before: the supplied HTML prototype with status cards used as filters.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="block">
+            <h2>An explicit filter for task status</h2>
+            <p>In the prototype, the status cards also acted as filters. I questioned whether that interaction would be clear and added a standard Status field beside search and task type. The counts remain visible above the table, while the filter has an explicit label.</p>
+            <p>The design uses “Completed with errors” instead of “Partial”, making the difference from success and failure more specific.</p>
+            <div class="figures">
+                <figure class="figure" data-slot="after">
+                    <button class="zoom" type="button" aria-label="Enlarge image: After: an explicit Status filter, clearer outcome labels and a marked stuck task."><div class="media"><img src="images/after.webp" width="2040" height="1530" alt="The redesigned dashboard with a labelled Status filter, Completed with errors labels, and Running tasks also marked Stuck." decoding="async" loading="lazy"></div></button>
+                    <figcaption>After: an explicit Status filter, clearer outcome labels and a marked stuck task.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="block">
+            <h2>From task status to task details</h2>
+            <p>The table shows task status alongside the current step, progress, duration and launch source. A task can still be Running while also marked Stuck. I kept the two labels together and highlighted the affected row so the extra warning does not replace its execution status.</p>
+            <p>The existing side-panel pattern keeps the task list visible while showing timings, progress, the JSON payload and event logs. The selected task also has its own action; the running-task example shows Cancel task.</p>
+            <div class="figures">
+                <figure class="figure" data-slot="details">
+                    <button class="zoom" type="button" aria-label="Enlarge image: Task details open beside the list, with progress, parameters, logs and a task action."><div class="media"><img src="images/details.webp" width="1400" height="1050" alt="A task detail panel beside the task list, showing overview, progress, JSON payload, event logs and Cancel task." decoding="async" loading="lazy"></div></button>
+                    <figcaption>Task details open beside the list, with progress, parameters, logs and a task action.</figcaption>
+                </figure>
+            </div>
+        </section>
+    </main>
+
+    <nav class="read-next" data-read-next="async-task-service" aria-labelledby="read-next-title"><h2 class="read-next-title" id="read-next-title">Read next</h2><div class="case-grid"><a class="work-card work-card--small" data-slug="wizmenu" data-side="right" href="../../cases/wizmenu/"><span class="work-card-media"><img src="../../cases/wizmenu/images/hero.webp" alt="" width="2400" height="1800" loading="lazy" decoding="async"></span><div class="work-card-body"><h3 class="work-card-title"><span class="work-card-title-text">Designing WizMenu for owners and guests</span></h3><p class="work-card-tags">B2B · Restaurant software · QR menus</p></div></a><a class="work-card work-card--small" data-slug="loan-platform" data-side="right" href="../../cases/loan-platform/"><span class="work-card-media"><img src="../../cases/loan-platform/images/thumbnail.webp" alt="" width="2400" height="1800" loading="lazy" decoding="async"></span><div class="work-card-body"><h3 class="work-card-title"><span class="work-card-title-text">Turning three vibe-coded versions into one loan platform</span></h3><p class="work-card-tags">Fintech · B2B · Web app</p></div></a><a class="work-card work-card--small" data-slug="release-groups" data-side="right" href="../../cases/release-groups/"><span class="work-card-media"><img src="../../cases/release-groups/images/hero.webp" alt="" width="2400" height="1800" loading="lazy" decoding="async"></span><div class="work-card-body"><h3 class="work-card-title"><span class="work-card-title-text">Rolling out updates to client devices in stages</span></h3><p class="work-card-tags">Internal tools · B2B · Web app</p></div></a></div></nav>
+
+    <footer class="site-footer">
+        <div class="footer-links">
+            <a href="../../llms.txt">Text overview</a>
+            <span class="footer-separator" aria-hidden="true">/</span>
+            <a href="mailto:dmitriytanets@gmail.com">dmitriytanets@gmail.com</a>
+            <span class="footer-separator" aria-hidden="true">/</span>
+            <a href="https://www.linkedin.com/in/dmitriytanets/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <span class="footer-separator" aria-hidden="true">/</span>
+            <a href="https://dribbble.com/dmitriyt95" target="_blank" rel="noopener noreferrer">Dribbble</a>
+        </div>
+        <a class="back-to-top" href="#"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-up"></use></svg><span>Back to top</span></a>
+    </footer>
+    <script src="case.js"></script>
+</body>
+</html>

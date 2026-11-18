@@ -1,0 +1,153 @@
+{
+  "date": "2026-11-16",
+  "format": "WebP",
+  "quality": 94,
+  "images": [
+    {
+      "file": "images/hero.webp",
+      "fileKey": "41FTN2v2LSgy0IDq5rANIH",
+      "nodeId": "228:7383",
+      "nodeName": "thumb v2",
+      "sourceDimensions": [
+        2120,
+        1590
+      ],
+      "outputDimensions": [
+        2400,
+        1800
+      ],
+      "treatment": "Whole prepared composition exported at 2400x1800, no crop or reframing.",
+      "bytes": 570186,
+      "sha256": "8f89c5815a6ffb5f3c355e6c227300b73348e051ad77d0e94d3352bd0e96f1c4"
+    },
+    {
+      "file": "images/after-groups.webp",
+      "fileKey": "41FTN2v2LSgy0IDq5rANIH",
+      "nodeId": "277:7218",
+      "nodeName": "groups",
+      "sourceDimensions": [
+        2400,
+        1800
+      ],
+      "outputDimensions": [
+        2400,
+        1800
+      ],
+      "treatment": "Whole prepared composition exported at 2400x1800, no crop or reframing.",
+      "bytes": 69562,
+      "sha256": "bb00de9794c51d23f35e93f6670de71668d09b290dc224d2d4f10ebd5eaf14b2"
+    },
+    {
+      "file": "images/after-group-rollout.webp",
+      "fileKey": "41FTN2v2LSgy0IDq5rANIH",
+      "nodeId": "211:99000",
+      "nodeName": "Group page",
+      "sourceDimensions": [
+        2400,
+        1800
+      ],
+      "outputDimensions": [
+        2400,
+        1800
+      ],
+      "treatment": "Whole prepared composition exported at 2400x1800, no crop or reframing.",
+      "bytes": 230702,
+      "sha256": "5230bdef7752bf9b0d74b850f34ab32139eb824b81417bf0f3382afbb9459f0a"
+    },
+    {
+      "file": "images/after-company.webp",
+      "fileKey": "41FTN2v2LSgy0IDq5rANIH",
+      "nodeId": "277:8225",
+      "nodeName": "company",
+      "sourceDimensions": [
+        2400,
+        1800
+      ],
+      "outputDimensions": [
+        2400,
+        1800
+      ],
+      "treatment": "Whole prepared composition exported at 2400x1800, no crop or reframing.",
+      "bytes": 69288,
+      "sha256": "aa6d2ab0b029fbb11420f387e6157849858d76ebc8581cbca84d2608c3d53c76"
+    },
+    {
+      "file": "images/after-all-devices.webp",
+      "fileKey": "41FTN2v2LSgy0IDq5rANIH",
+      "nodeId": "277:8447",
+      "nodeName": "all devices",
+      "sourceDimensions": [
+        2400,
+        1800
+      ],
+      "outputDimensions": [
+        2400,
+        1800
+      ],
+      "treatment": "Whole prepared composition exported at 2400x1800, no crop or reframing.",
+      "bytes": 231620,
+      "sha256": "09f217a4dc3fa901e1c780ad2b45e838805274cf1fb82d1bf995a84f31eaaeda"
+    },
+    {
+      "file": "images/update-trigger.webp",
+      "fileKey": "41FTN2v2LSgy0IDq5rANIH",
+      "nodeId": "229:7714",
+      "nodeName": "Update trigger v2",
+      "sourceDimensions": [
+        2400,
+        1800
+      ],
+      "outputDimensions": [
+        2400,
+        1800
+      ],
+      "treatment": "Whole prepared composition, exported as PNG at 1.5x; no crop or reframing.",
+      "bytes": 55060,
+      "sha256": "8f6bac884e50c3385770970f872f1e4ecf87da48dccaadbe0319ee5a44171533"
+    },
+    {
+      "file": "images/update-panel-states.webp",
+      "fileKey": "41FTN2v2LSgy0IDq5rANIH",
+      "nodeId": "228:8613",
+      "nodeName": "Update panel states v2",
+      "sourceDimensions": [
+        2400,
+        1800
+      ],
+      "outputDimensions": [
+        2400,
+        1800
+      ],
+      "treatment": "Whole prepared composition, exported as PNG at 1.5x; no crop or reframing.",
+      "bytes": 92036,
+      "sha256": "2125e1ebc13ab6534dd3a46cfecfa2c27af74646560768acd58e9160fd5ea6d4"
+    },
+    {
+      "file": "images/after-overview.webp",
+      "fileKey": "41FTN2v2LSgy0IDq5rANIH",
+      "nodeId": "271:138104",
+      "nodeName": "dashboard",
+      "sourceDimensions": [
+        2400,
+        1800
+      ],
+      "outputDimensions": [
+        2400,
+        1800
+      ],
+      "treatment": "Whole prepared composition exported at 2400x1800, no crop or reframing.",
+      "bytes": 124700,
+      "sha256": "dbc06053f9b03967f2c412c068785fab4a3c1b0726a6509585d4ffce572c7117"
+    }
+  ],
+  "video": {
+    "file": "wizard/video/release-groups-wizard.mp4",
+    "poster": "wizard/video/release-groups-wizard-poster.png",
+    "dimensions": [
+      1600,
+      1200
+    ],
+    "durationSeconds": 16,
+    "treatment": "Reused existing files unchanged."
+  }
+}

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Rolling out updates to client devices in stages · Dmytro Tanets</title>
+    <meta name="description" content="Designing release groups in HS-Soft’s internal console so support can roll out app updates to client devices in stages, follow progress and stop a rollout.">
+    <link rel="icon" href="../../favicon.ico?v=portrait-20261118" sizes="32x32">
+    <link rel="icon" href="../../favicon.svg?v=portrait-20261118" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../../apple-touch-icon.png?v=portrait-20261118">
+    <link rel="manifest" href="../../site.webmanifest?v=portrait-20261118">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://api.fontshare.com">
+    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="case.css">
+    <link rel="stylesheet" href="../../assets/css/work-cards.css">
+    <link rel="stylesheet" href="../../assets/css/next-case.css">
+    <script src="../../data/cases.js" defer></script>
+    <script src="../../assets/js/case-registry.js" defer></script>
+    <script src="../../assets/js/analytics.js" defer></script>
+    <link rel="alternate" type="text/plain" href="../../llms.txt" title="Portfolio text overview">
+</head>
+<body>
+    <!-- Icons: reusable inline SVG symbols (Tabler geometry, 1.5px stroke).
+         Use: <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-left"></use></svg>
+         Size: .icon is 16px, add .icon-20 for 20px. -->
+    <svg class="icon-sprite" aria-hidden="true" focusable="false">
+        <symbol id="icon-arrow-left" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14" vector-effect="non-scaling-stroke"/>
+                <path d="M5 12l6 6" vector-effect="non-scaling-stroke"/>
+                <path d="M5 12l6 -6" vector-effect="non-scaling-stroke"/>
+            </g>
+        </symbol>
+        <symbol id="icon-arrow-right" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14" vector-effect="non-scaling-stroke"/>
+                <path d="M19 12l-6 6" vector-effect="non-scaling-stroke"/>
+                <path d="M19 12l-6 -6" vector-effect="non-scaling-stroke"/>
+            </g>
+        </symbol>
+        <symbol id="icon-x" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 6L6 18" vector-effect="non-scaling-stroke"/>
+                <path d="M6 6l12 12" vector-effect="non-scaling-stroke"/>
+            </g>
+        </symbol>
+        <symbol id="icon-arrow-up" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5v14" vector-effect="non-scaling-stroke"/>
+                <path d="M18 11l-6 -6" vector-effect="non-scaling-stroke"/>
+                <path d="M6 11l6 -6" vector-effect="non-scaling-stroke"/>
+            </g>
+        </symbol>
+        <symbol id="icon-chevron-left" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 6l-6 6l6 6" vector-effect="non-scaling-stroke"/>
+            </g>
+        </symbol>
+        <symbol id="icon-chevron-right" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 6l6 6l-6 6" vector-effect="non-scaling-stroke"/>
+            </g>
+        </symbol>
+    </svg>
+
+    <!-- Site header (same structure, content and links as the home page) -->
+    <header class="site-header">
+        <a class="brand" href="../../" aria-label="Dmytro Tanets, home">
+            <img src="../../images/avatar.png" width="40" height="40" alt="">
+            <span class="brand-text">
+                <span class="brand-name">Dmytro Tanets</span>
+                <span class="brand-role">Product Designer</span>
+            </span>
+        </a>
+        <nav class="links">
+            <a class="nav-link" href="../../Dmytro-Tanets-CV.pdf" download>
+                <span class="label-long">Download CV</span><span class="label-short">CV</span>
+            </a>
+            <a class="button" href="mailto:dmitriytanets@gmail.com">Get in touch</a>
+        </nav>
+    </header>
+
+    <main class="page">
+        <header class="block case-header">
+            <a class="back" href="../../" data-work-link><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-left"></use></svg><span>All work</span></a>
+            <p class="label">Internal tools · B2B · Web app</p>
+            <h1>Rolling out updates to client devices in stages</h1>
+            <p class="lede">A new part of HS-Soft's internal device console. HS-Soft makes POS and self-checkout software for bakeries, cafés and restaurants. I turned the CTO's idea of release groups into a tool that lets support send a version to the right devices, follow the rollout and stop it.</p>
+            <dl class="meta">
+                <div><dt>Role</dt><dd>UX designer, sole designer</dd></div>
+                <div><dt>Team</dt><dd>CTO, Head of Support, QA lead, developers</dd></div>
+                <div><dt>Timeline</dt><dd>Dec 2025, about a month</dd></div>
+                <div><dt>Tools</dt><dd>Figma</dd></div>
+                <div><dt>Status</dt><dd>Shipped</dd></div>
+            </dl>
+        </header>
+
+        <figure class="figure hero" data-slot="hero"><div class="media"><img src="images/hero.webp" alt="Smart Checkout Pilot group: device list with update statuses, and the Update in progress panel at 24% with Pause and Abort." width="2400" height="1800" decoding="async" fetchpriority="high"></div></figure>
+
+        <section class="block summary" aria-label="Context, goal and outcome">
+            <div class="row">
+                <p class="label">Context</p>
+                <p>HS-Soft's apps run on POS and self-checkout devices in client shops. Support could only update every device at once or go device by device. Getting a version onto a specific set of devices, like a pilot or a large client, was slow, mistakes were common, and updates took a big share of support's time.</p>
+            </div>
+            <div class="row">
+                <p class="label">Goal</p>
+                <p>Turn release groups, an idea that so far lived only in the CTO's head and in developer chats, into a tab of the internal console. Support should be able to send a version to one group, watch it roll out and stop it if something goes wrong.</p>
+            </div>
+            <div class="row">
+                <p class="label">Outcome</p>
+                <p>Everything I designed shipped to production. Support no longer updates devices by hand: they set a group's rule, the console rolls the version out in steps, and large clients stay on a stable version while new ones are tried on pilot devices.</p>
+            </div>
+        </section>
+
+        <section class="block">
+            <h2>Constraints</h2>
+            <dl class="constraints">
+                <div class="constraint-row"><dt>Interface</dt><dd>A new tab in a working console, built only from its existing MUI components</dd></div>
+                <div class="constraint-row"><dt>Direction</dt><dd>The CTO set the frame: release groups, moves through a wizard, no bulk edit</dd></div>
+                <div class="constraint-row"><dt>Groups</dt><dd>The team hadn't agreed whether groups are fixed or created by admins</dd></div>
+                <div class="constraint-row"><dt>Risk</dt><dd>A wrong version on a client device is expensive, so risky actions had to be hard to do by accident</dd></div>
+            </dl>
+        </section>
+
+        <section class="block">
+            <h2>Learning how support works</h2>
+            <p>Support ran the updates, so I started with them. Before designing, I asked the team how they updated devices and what they called things, so the console would use their words. The design was then reviewed at our twice-weekly meetings with the CTO and the developers.</p>
+        </section>
+        <section class="block">
+            <h2>Groups belong to an app</h2>
+            <p>Versions are released per app, and every device runs one app, so groups belong to an app too. Mobile waiter, Smart Checkout, Self Checkout and the others each have their own Pilot, Test, Wave and Enterprise groups. Each group shows how many devices it has, its current and target version, and where its update stands.</p>
+            <div class="figures">
+                <figure class="figure" data-slot="after-groups"><div class="media"><img src="images/after-groups.webp" alt="Release groups by app. Mobile waiter is expanded to show Pilot, Test, Wave and Enterprise, device counts, current and target versions and update status." width="2400" height="1800" decoding="async" loading="lazy"></div><figcaption>Groups under each app, with current and target versions and update status.</figcaption></figure>
+                <figure class="figure" data-slot="after-group-rollout"><div class="media"><img src="images/after-group-rollout.webp" alt="Inside the Pilot group: each device&#39;s update status and company, with the rollout progress and group details beside the list." width="2400" height="1800" decoding="async" loading="lazy"></div><figcaption>Inside a group: every device&#39;s update status, with the rollout panel beside it.</figcaption></figure>
+            </div>
+            <div class="tradeoff">
+                <p class="label">Trade-off</p>
+                <p>Some of the team wanted a fixed set of groups, others wanted admins to create their own. I designed the screens to work either way. Fixed groups shipped, and when a new group is needed, the CTO adds it in code.</p>
+            </div>
+        </section>
+        <section class="block">
+            <h2>Three ways into the same devices</h2>
+            <p>Support doesn't always start from a group. A client calls about their tills, or someone needs one device by its serial number. So the console has three ways in: groups, a company's page with its branches, and a list of all devices. Moving a device works the same from each of them.</p>
+            <div class="figures">
+                <figure class="figure" data-slot="after-company"><div class="media"><img src="images/after-company.webp" alt="Backhaus Krämer&#39;s page: devices grouped by city and branch, Hamburg and Pinneberg expanded, each device with its app and group." width="2400" height="1800" decoding="async" loading="lazy"></div><figcaption>A company&#39;s page: its devices by city and branch.</figcaption></figure>
+                <figure class="figure" data-slot="after-all-devices"><div class="media"><img src="images/after-all-devices.webp" alt="All devices: a searchable list with serial number, app, group, company, location and branch for every device." width="2400" height="1800" decoding="async" loading="lazy"></div><figcaption>All devices, searchable by name or serial number.</figcaption></figure>
+            </div>
+        </section>
+        <section class="block">
+            <h2>One rule per group for when to update</h2>
+            <p>Each group follows a single rule: install every new stable version after a delay, or stay on a fixed version. Updates go out in steps, a set number of devices at a time, and the panel next to the device list shows where the group stands. Pause holds the rollout. Abort stops it for good but rolls nothing back: a second, unplanned update across live shops is riskier than a few devices on a newer version. Those devices stay flagged until the group's next update brings everyone to the same version.</p>
+            <div class="figures">
+                <figure class="figure" data-slot="update-trigger"><div class="media"><img src="images/update-trigger.webp" alt="Group settings with the Update trigger menu open: New stable version, installed after a delay, or Fixed version, staying on one version." width="2400" height="1800" decoding="async" loading="lazy"></div><figcaption>A group either installs every new stable version after a delay, or stays on a fixed one.</figcaption></figure>
+                <figure class="figure" data-slot="update-panel-states"><div class="media"><img src="images/update-panel-states.webp" alt="Four update panels: waiting for a stable version, a scheduled update countdown, a fixed version and an update in progress at 24% with Pause and Abort." width="2400" height="1800" decoding="async" loading="lazy"></div><figcaption>The update panel: waiting for a version, a scheduled update, a fixed version, and a rollout in progress with pause and abort.</figcaption></figure>
+            </div>
+        </section>
+        <section class="block">
+            <h2>Moving devices: a wizard, not bulk edit</h2>
+            <p>Moving a device to another group changes the software it runs. The CTO saw it as a rare and risky action, not something like sorting chats in a messenger, so it goes through four steps: company, devices, new group and confirmation. The last step says plainly that the group's version will be installed on every selected device.</p>
+            <div class="figures">
+                <figure class="figure" data-slot="wizard"><div class="media"><img src="wizard/video/release-groups-wizard-poster.png" alt="The Move multiple devices wizard: select Backhaus Krämer, choose Hauptkasse, Wagen 1 and Wagen 2, select the Wave group, then confirm that its version will be installed on all three devices." width="1600" height="1200" decoding="async" loading="lazy"></div><figcaption>Pick the company, the devices and the new group, then confirm.</figcaption></figure>
+            </div>
+            <div class="tradeoff">
+                <p class="label">Trade-off</p>
+                <p>I suggested bulk editing right in the table, which would be faster for support. The CTO kept the wizard to prevent mistakes. A single device can still be moved from its row menu, with the same warning.</p>
+            </div>
+        </section>
+        <section class="block">
+            <h2>Recommendations instead of charts</h2>
+            <p>The CTO asked for an overview with statistics: Android versions, app versions, devices online. Those charts don't tell support what to do next, so I suggested dropping the page.</p>
+            <div class="figures">
+                <figure class="figure" data-slot="after-overview"><div class="media"><img src="images/after-overview.webp" alt="Device overview with stat cards and recommendations for unassigned devices, problematic versions and outdated versions in a group, above Android and app version charts." width="2400" height="1800" decoding="async" loading="lazy"></div><figcaption>Recommendations first, charts below.</figcaption></figure>
+            </div>
+            <div class="tradeoff">
+                <p class="label">Trade-off</p>
+                <p>The CTO wanted the overview, so the charts stayed. I put recommendations above them: devices without a group, devices on a problematic version and groups running an outdated one.</p>
+            </div>
+        </section>
+        <section class="block">
+            <h2>Room for the next feature</h2>
+            <p>Some device statuses, like Postponed and Declined, had no use yet when the console shipped. I was designing daytime updates for the checkout app at the same time, where a cashier can postpone an update, so the console already had a place for them.</p>
+        </section>
+    </main>
+    <nav class="read-next" data-read-next="release-groups" aria-labelledby="read-next-title"><h2 class="read-next-title" id="read-next-title">Read next</h2><div class="case-grid"><a class="work-card work-card--small" data-slug="property-documents" data-side="right" href="../../cases/property-documents/"><span class="work-card-media"><img src="../../cases/property-documents/images/hero.webp" alt="" width="2400" height="1800" loading="lazy" decoding="async"></span><div class="work-card-body"><h3 class="work-card-title"><span class="work-card-title-text">One request for every document a property sale needs</span></h3><p class="work-card-tags">Legal tech · B2B · Web app</p></div></a><a class="work-card work-card--small" data-slug="wawi-audit" data-side="right" href="../../cases/wawi-audit/"><span class="work-card-media"><img src="../../cases/wawi-audit/images/thumbnail.webp?v=thumb-ea1454817962" alt="" width="2400" height="1800" loading="lazy" decoding="async"></span><div class="work-card-body"><h3 class="work-card-title"><span class="work-card-title-text">Auditing order creation in a bakery ERP</span></h3><p class="work-card-tags">B2B · ERP · UX audit</p></div></a><a class="work-card work-card--small" data-slug="receipt-search" data-side="right" href="../../cases/receipt-search/"><span class="work-card-media"><img src="../../cases/receipt-search/images/hero.webp" alt="" width="2400" height="1800" loading="lazy" decoding="async"></span><div class="work-card-body"><h3 class="work-card-title"><span class="work-card-title-text">Searching receipts without hitting the table limit</span></h3><p class="work-card-tags">B2B · Retail analytics · Data search</p></div></a></div></nav>
+
+    <!-- Site footer (same content and links as the home page) -->
+    <footer class="site-footer">
+        <div class="footer-links">
+            <a href="../../llms.txt">Text overview</a>
+            <span class="footer-separator" aria-hidden="true">/</span>
+            <a href="mailto:dmitriytanets@gmail.com">dmitriytanets@gmail.com</a>
+            <span class="footer-separator" aria-hidden="true">/</span>
+            <a href="https://www.linkedin.com/in/dmitriytanets/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <span class="footer-separator" aria-hidden="true">/</span>
+            <a href="https://dribbble.com/dmitriyt95" target="_blank" rel="noopener noreferrer">Dribbble</a>
+        </div>
+        <a class="back-to-top" href="#"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-up"></use></svg><span>Back to top</span></a>
+    </footer>
+
+    <script src="case.js"></script>
+</body>
+</html>
